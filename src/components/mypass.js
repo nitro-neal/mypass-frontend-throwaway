@@ -1,14 +1,54 @@
 import React, { Component, Link } from "react";
-import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn } from "mdbreact";
+import {
+  MDBContainer,
+  MDBRow,
+  MDBCol,
+  MDBInput,
+  MDBBtn,
+  MDBDropdown,
+  MDBDropdownToggle,
+  MDBDropdownMenu,
+  MDBDropdownItem
+} from "mdbreact";
 import axios from "axios";
 
 class MyPass extends React.Component {
-  state = { register: true, selectedFile: null, documentUrls: [] };
+  state = {
+    register: true,
+    selectedFile: null,
+    documentUrls: [],
+    ownerAccounts: undefined,
+    uploadForAccountName: undefined,
+    uploadForAccountId: undefined
+  };
 
   getAccount = async () => {
+    console.log("get account1");
     let res = await axios.get("http://localhost:5000/api/account/");
     let account = res.data.account;
 
+    console.log("get account");
+    console.log(account);
+
+    if (account.role === "agent") {
+      console.log("agent here");
+      let res = await axios.get("http://localhost:5000/api/accounts/");
+      console.log(res.data);
+      let owners = [];
+      for (var i = 0; i < res.data.length; i++) {
+        if (res.data[i].role === "owner") {
+          let ownerObj = {
+            accountId: res.data[i]._id,
+            name: res.data[i].username
+          };
+          owners.push(ownerObj);
+        }
+      }
+
+      console.log("owners:");
+      console.log(owners);
+      this.setState({ ownerAccounts: owners });
+    }
     this.setState({ username: account.username });
     this.setState({ email: account.email });
     this.setState({ loggedIn: true });
@@ -37,11 +77,18 @@ class MyPass extends React.Component {
     this.setState({ documentUrls: documentUrls });
   };
 
-  onClickHandler = async () => {
+  uploadDocument = async () => {
     const file = document.getElementById("inputGroupFile01").files;
     const formData = new FormData();
 
     formData.append("img", file[0]);
+    if (
+      this.state.uploadForAccountName !== undefined &&
+      this.state.uploadForAccountId !== undefined
+    ) {
+      formData.append("uploadForAccountName", this.state.uploadForAccountName);
+      formData.append("uploadForAccountId", this.state.uploadForAccountId);
+    }
 
     let res = await fetch("http://localhost:5000/api/accounts/documents/", {
       method: "POST",
@@ -126,7 +173,41 @@ class MyPass extends React.Component {
     this.getDocuments();
   };
 
+  dropdownClicked = e => {
+    console.log("drop down clicked");
+
+    this.setState({ uploadForAccountName: e.target.name });
+    this.setState({ uploadForAccountId: e.target.id });
+  };
+
   render() {
+    let renderOwners;
+    let dropDownItems = [];
+
+    if (this.state.ownerAccounts !== undefined) {
+      for (var i = 0; i < this.state.ownerAccounts.length; i++) {
+        dropDownItems.push(
+          <MDBDropdownItem
+            id={this.state.ownerAccounts[i].accountId}
+            name={this.state.ownerAccounts[i].name}
+          >
+            {this.state.ownerAccounts[i].name}
+          </MDBDropdownItem>
+        );
+      }
+
+      renderOwners = (
+        <MDBDropdown>
+          <MDBDropdownToggle caret color="default">
+            Upload File For User
+          </MDBDropdownToggle>
+          <MDBDropdownMenu onClick={this.dropdownClicked} basic>
+            {dropDownItems}
+          </MDBDropdownMenu>
+        </MDBDropdown>
+      );
+    }
+
     // register forms
     let formsToPresent = (
       <div>
@@ -214,17 +295,15 @@ class MyPass extends React.Component {
       );
     }
 
-    //sdfasd
+    //logged in
     if (this.state.loggedIn === true) {
       formsToPresent = (
         <div>
           <h5>Username: {this.state.username}</h5>
           <h5>Email: {this.state.email}</h5>
-
           <button onClick={this.logout} className="button-link">
             logout
           </button>
-
           <div className="custom-file">
             <input
               type="file"
@@ -232,15 +311,16 @@ class MyPass extends React.Component {
               id="inputGroupFile01"
               aria-describedby="inputGroupFileAddon01"
             />
+
             <label className="custom-file-label" htmlFor="inputGroupFile01">
               Choose file
             </label>
           </div>
-
+          {renderOwners}
           {/* <input type="file" name="file" onChange={this.onChangeHandler} /> */}
           <MDBBtn
             className="btn btn-success btn-block"
-            onClick={this.onClickHandler}
+            onClick={this.uploadDocument}
           >
             Upload
           </MDBBtn>
@@ -255,6 +335,7 @@ class MyPass extends React.Component {
         <img style={{ width: "350px" }} src={this.state.documentUrls[i]}></img>
       );
     }
+
     return (
       <MDBContainer style={{ paddingTop: "300px" }} className="center-vert">
         <MDBRow>
