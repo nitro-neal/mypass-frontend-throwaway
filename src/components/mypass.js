@@ -20,7 +20,8 @@ class MyPass extends React.Component {
     documentJwts: [],
     ownerAccounts: undefined,
     uploadForAccountName: undefined,
-    uploadForAccountId: undefined
+    uploadForAccountId: undefined,
+    role: "owner"
   };
 
   getAccount = async () => {
@@ -30,7 +31,7 @@ class MyPass extends React.Component {
     console.log("get account");
     console.log(account);
 
-    if (account.role === "agent") {
+    if (account.role === "notary") {
       let res = await axios.get("http://localhost:5000/api/accounts/");
       let owners = [];
       for (var i = 0; i < res.data.length; i++) {
@@ -61,9 +62,7 @@ class MyPass extends React.Component {
   };
 
   getDocuments = async () => {
-    let documentsRes = await axios.get(
-      "http://localhost:5000/api/accounts/documents/"
-    );
+    let documentsRes = await axios.get("http://localhost:5000/api/documents/");
 
     let documents = documentsRes.data.documents;
     let documentUrls = [];
@@ -71,7 +70,7 @@ class MyPass extends React.Component {
 
     for (var i = 0; i < documents.length; i++) {
       let documentUrl =
-        "http://localhost:5000/api/accounts/documents/" + documents[i].url;
+        "http://localhost:5000/api/documents/" + documents[i].url;
       documentUrls.push(documentUrl);
       if (documents[i].vcJwt === undefined) {
         documentJwts.push("-");
@@ -96,7 +95,7 @@ class MyPass extends React.Component {
       formData.append("uploadForAccountId", this.state.uploadForAccountId);
     }
 
-    let res = await fetch("http://localhost:5000/api/accounts/documents/", {
+    let res = await fetch("http://localhost:5000/api/documents/", {
       method: "POST",
       headers: {
         authorization: "Token " + localStorage.getItem("jwt")
@@ -136,7 +135,8 @@ class MyPass extends React.Component {
       account: {
         username: this.state.username,
         email: this.state.email,
-        password: this.state.password
+        password: this.state.password,
+        role: this.state.role
       }
     };
 
@@ -180,6 +180,10 @@ class MyPass extends React.Component {
   dropdownClicked = e => {
     this.setState({ uploadForAccountName: e.target.name });
     this.setState({ uploadForAccountId: e.target.id });
+  };
+
+  roleDropdownClicked = e => {
+    this.setState({ role: e.target.name });
   };
 
   render() {
@@ -253,7 +257,7 @@ class MyPass extends React.Component {
     if (this.state.register === false) {
       formsToPresent = (
         <form>
-          <p className="h5 text-center mb-4">Sign in</p>
+          <p className="h5 text-center mb-4">Register</p>
           <div className="grey-text">
             <MDBInput
               name="username"
@@ -283,6 +287,15 @@ class MyPass extends React.Component {
               type="password"
               validate
             />
+            <MDBDropdown>
+              <MDBDropdownToggle caret color="default">
+                {this.state.role}
+              </MDBDropdownToggle>
+              <MDBDropdownMenu onClick={this.roleDropdownClicked} basic>
+                <MDBDropdownItem name="owner">owner</MDBDropdownItem>
+                <MDBDropdownItem name="notary">notary</MDBDropdownItem>
+              </MDBDropdownMenu>
+            </MDBDropdown>
           </div>
           <div className="text-center">
             <MDBBtn onClick={this.register}>Register</MDBBtn>
