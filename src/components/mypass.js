@@ -17,13 +17,13 @@ class MyPass extends React.Component {
     register: true,
     selectedFile: null,
     documentUrls: [],
+    documentJwts: [],
     ownerAccounts: undefined,
     uploadForAccountName: undefined,
     uploadForAccountId: undefined
   };
 
   getAccount = async () => {
-    console.log("get account1");
     let res = await axios.get("http://localhost:5000/api/account/");
     let account = res.data.account;
 
@@ -31,9 +31,7 @@ class MyPass extends React.Component {
     console.log(account);
 
     if (account.role === "agent") {
-      console.log("agent here");
       let res = await axios.get("http://localhost:5000/api/accounts/");
-      console.log(res.data);
       let owners = [];
       for (var i = 0; i < res.data.length; i++) {
         if (res.data[i].role === "owner") {
@@ -45,12 +43,13 @@ class MyPass extends React.Component {
         }
       }
 
-      console.log("owners:");
-      console.log(owners);
       this.setState({ ownerAccounts: owners });
     }
+
     this.setState({ username: account.username });
     this.setState({ email: account.email });
+    this.setState({ role: account.role });
+    this.setState({ didAddress: account.didAddress });
     this.setState({ loggedIn: true });
 
     this.getDocuments();
@@ -68,13 +67,20 @@ class MyPass extends React.Component {
 
     let documents = documentsRes.data.documents;
     let documentUrls = [];
+    let documentJwts = [];
 
     for (var i = 0; i < documents.length; i++) {
       let documentUrl =
         "http://localhost:5000/api/accounts/documents/" + documents[i].url;
       documentUrls.push(documentUrl);
+      if (documents[i].vcJwt === undefined) {
+        documentJwts.push("-");
+      } else {
+        documentJwts.push(documents[i].vcJwt);
+      }
     }
     this.setState({ documentUrls: documentUrls });
+    this.setState({ documentJwts: documentJwts });
   };
 
   uploadDocument = async () => {
@@ -104,8 +110,6 @@ class MyPass extends React.Component {
   componentDidMount() {
     let jwt = localStorage.getItem("jwt");
     if (jwt !== undefined && jwt !== "undefined") {
-      console.log("jwt");
-      console.log(jwt);
       axios.defaults.headers.common["Authorization"] = "Bearer " + jwt;
       this.getAccount();
     }
@@ -174,8 +178,6 @@ class MyPass extends React.Component {
   };
 
   dropdownClicked = e => {
-    console.log("drop down clicked");
-
     this.setState({ uploadForAccountName: e.target.name });
     this.setState({ uploadForAccountId: e.target.id });
   };
@@ -301,6 +303,8 @@ class MyPass extends React.Component {
         <div>
           <h5>Username: {this.state.username}</h5>
           <h5>Email: {this.state.email}</h5>
+          <h5>Role: {this.state.role}</h5>
+          <h5>Did: {this.state.didAddress}</h5>
           <button onClick={this.logout} className="button-link">
             logout
           </button>
@@ -332,7 +336,13 @@ class MyPass extends React.Component {
 
     for (var i = 0; i < this.state.documentUrls.length; i++) {
       images.push(
-        <img style={{ width: "350px" }} src={this.state.documentUrls[i]}></img>
+        <div>
+          <img
+            style={{ width: "350px" }}
+            src={this.state.documentUrls[i]}
+          ></img>
+          <p>{this.state.documentJwts[i]}</p>
+        </div>
       );
     }
 
