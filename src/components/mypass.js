@@ -16,6 +16,7 @@ class MyPass extends React.Component {
   state = {
     register: true,
     selectedFile: null,
+    uploadDisabled: true,
     documentUrls: [],
     documentJwts: [],
     ownerAccounts: undefined,
@@ -34,6 +35,8 @@ class MyPass extends React.Component {
     if (account.role === "notary") {
       let res = await axios.get("http://localhost:5000/api/accounts/");
       let owners = [];
+      console.log("accounts");
+      console.log(res.data);
       for (var i = 0; i < res.data.length; i++) {
         if (res.data[i].role === "owner") {
           let ownerObj = {
@@ -103,9 +106,15 @@ class MyPass extends React.Component {
       body: formData
     });
 
+    console.log(res);
+
     this.getDocuments();
   };
 
+  fileSelected = () => {
+    console.log("file selected");
+    this.setState({ uploadDisabled: false });
+  };
   componentDidMount() {
     let jwt = localStorage.getItem("jwt");
     if (jwt !== undefined && jwt !== "undefined") {
@@ -150,6 +159,7 @@ class MyPass extends React.Component {
     axios.defaults.headers.common["Authorization"] = "Bearer " + account.token;
     localStorage.setItem("jwt", account.token);
 
+    this.getAccount();
     this.getDocuments();
   };
 
@@ -174,6 +184,7 @@ class MyPass extends React.Component {
     axios.defaults.headers.common["Authorization"] = "Bearer " + account.token;
     localStorage.setItem("jwt", account.token);
 
+    this.getAccount();
     this.getDocuments();
   };
 
@@ -204,7 +215,7 @@ class MyPass extends React.Component {
 
       renderOwners = (
         <MDBDropdown>
-          <MDBDropdownToggle caret color="default">
+          <MDBDropdownToggle caret color="primary">
             Upload File For User
           </MDBDropdownToggle>
           <MDBDropdownMenu onClick={this.dropdownClicked} basic>
@@ -242,7 +253,9 @@ class MyPass extends React.Component {
             />
           </div>
           <div className="text-center">
-            <MDBBtn onClick={this.login}>Login</MDBBtn>
+            <MDBBtn color="primary" onClick={this.login}>
+              Login
+            </MDBBtn>
           </div>
         </form>
 
@@ -287,8 +300,10 @@ class MyPass extends React.Component {
               type="password"
               validate
             />
-            <MDBDropdown>
-              <MDBDropdownToggle caret color="default">
+          </div>
+          <div className="text-center">
+            <MDBDropdown style={{ paddingTop: "40px" }}>
+              <MDBDropdownToggle caret color="primary">
                 {this.state.role}
               </MDBDropdownToggle>
               <MDBDropdownMenu onClick={this.roleDropdownClicked} basic>
@@ -296,9 +311,9 @@ class MyPass extends React.Component {
                 <MDBDropdownItem name="notary">notary</MDBDropdownItem>
               </MDBDropdownMenu>
             </MDBDropdown>
-          </div>
-          <div className="text-center">
-            <MDBBtn onClick={this.register}>Register</MDBBtn>
+            <MDBBtn color="primary" onClick={this.register}>
+              Register
+            </MDBBtn>
           </div>
 
           <div className="text-center">
@@ -310,7 +325,6 @@ class MyPass extends React.Component {
       );
     }
 
-    //logged in
     if (this.state.loggedIn === true) {
       formsToPresent = (
         <div>
@@ -323,6 +337,7 @@ class MyPass extends React.Component {
           </button>
           <div className="custom-file">
             <input
+              onClick={this.fileSelected}
               type="file"
               className="custom-file-input"
               id="inputGroupFile01"
@@ -334,9 +349,11 @@ class MyPass extends React.Component {
             </label>
           </div>
           {renderOwners}
-          {/* <input type="file" name="file" onChange={this.onChangeHandler} /> */}
+
           <MDBBtn
-            className="btn btn-success btn-block"
+            disabled={this.state.uploadDisabled}
+            color="primary"
+            className="btn btn-block"
             onClick={this.uploadDocument}
           >
             Upload
@@ -349,24 +366,44 @@ class MyPass extends React.Component {
 
     for (var i = 0; i < this.state.documentUrls.length; i++) {
       images.push(
-        <div>
-          <img
-            style={{ width: "350px" }}
-            src={this.state.documentUrls[i]}
-          ></img>
-          <p>{this.state.documentJwts[i]}</p>
-        </div>
+        <MDBCol style={{ paddingBottom: "100px" }}>
+          <div
+            style={{
+              paddingBottom: "50px",
+              width: "320px",
+              height: "320px",
+              overflow: "hidden"
+            }}
+          >
+            <div
+              style={{ width: "300px", height: "300px", overflow: "hidden" }}
+            >
+              <img
+                style={{ width: "400px" }}
+                src={this.state.documentUrls[i]}
+              ></img>
+            </div>
+            <p>{this.state.documentJwts[i]}</p>
+          </div>
+        </MDBCol>
       );
     }
 
     return (
-      <MDBContainer style={{ paddingTop: "300px" }} className="center-vert">
+      <MDBContainer style={{ paddingTop: "100px" }} className="center-vert">
+        <MDBRow style={{ paddingBottom: "100px" }}>
+          <MDBCol></MDBCol>
+          <MDBCol>
+            <img width="350px" src="./mypass-logo.png"></img>
+          </MDBCol>
+          <MDBCol></MDBCol>
+        </MDBRow>
         <MDBRow>
           <MDBCol></MDBCol>
           <MDBCol>{formsToPresent}</MDBCol>
           <MDBCol></MDBCol>
         </MDBRow>
-        <MDBRow>{images}</MDBRow>
+        <MDBRow style={{ paddingTop: "100px" }}>{images}</MDBRow>
       </MDBContainer>
     );
   }
