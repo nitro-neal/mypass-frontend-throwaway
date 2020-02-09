@@ -1,15 +1,5 @@
 import React, { Component, Link } from "react";
-import {
-  MDBContainer,
-  MDBRow,
-  MDBCol,
-  MDBInput,
-  MDBBtn,
-  MDBDropdown,
-  MDBDropdownToggle,
-  MDBDropdownMenu,
-  MDBDropdownItem
-} from "mdbreact";
+import { MDBAlert, MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn, MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem } from "mdbreact";
 import axios from "axios";
 
 class MyPass extends React.Component {
@@ -72,8 +62,7 @@ class MyPass extends React.Component {
     let documentJwts = [];
 
     for (var i = 0; i < documents.length; i++) {
-      let documentUrl =
-        "http://localhost:5000/api/documents/" + documents[i].url;
+      let documentUrl = "http://localhost:5000/api/documents/" + documents[i].url;
       documentUrls.push(documentUrl);
       if (documents[i].vcJwt === undefined) {
         documentJwts.push("-");
@@ -90,10 +79,7 @@ class MyPass extends React.Component {
     const formData = new FormData();
 
     formData.append("img", file[0]);
-    if (
-      this.state.uploadForAccountName !== undefined &&
-      this.state.uploadForAccountId !== undefined
-    ) {
+    if (this.state.uploadForAccountName !== undefined && this.state.uploadForAccountId !== undefined) {
       formData.append("uploadForAccountName", this.state.uploadForAccountName);
       formData.append("uploadForAccountId", this.state.uploadForAccountId);
     }
@@ -149,7 +135,15 @@ class MyPass extends React.Component {
       }
     };
 
-    let res = await axios.post("http://localhost:5000/api/accounts/", body);
+    let res;
+    try {
+      res = await axios.post("http://localhost:5000/api/accounts/", body);
+    } catch (error) {
+      console.log("error");
+      console.log(error.response);
+      this.handleErrors(error);
+      return;
+    }
 
     let account = res.data.account;
     this.setState({ username: account.username });
@@ -163,6 +157,13 @@ class MyPass extends React.Component {
     this.getDocuments();
   };
 
+  handleErrors = error => {
+    if (error.response.data.errors.message !== undefined) {
+      this.setState({ errorMessage: JSON.stringify(error.response.data.errors.message) });
+    } else {
+      this.setState({ errorMessage: JSON.stringify(error.response.data.errors) });
+    }
+  };
   login = async () => {
     let body = {
       account: {
@@ -171,10 +172,18 @@ class MyPass extends React.Component {
       }
     };
 
-    let res = await axios.post(
-      "http://localhost:5000/api/accounts/login",
-      body
-    );
+    let res;
+    try {
+      res = await axios.post("http://localhost:5000/api/accounts/login", body);
+    } catch (error) {
+      console.log("error");
+      console.log(error.response);
+      this.handleErrors(error);
+      return;
+    }
+
+    console.log("login response");
+    console.log(res);
 
     let account = res.data.account;
     this.setState({ username: account.username });
@@ -204,10 +213,7 @@ class MyPass extends React.Component {
     if (this.state.ownerAccounts !== undefined) {
       for (var i = 0; i < this.state.ownerAccounts.length; i++) {
         dropDownItems.push(
-          <MDBDropdownItem
-            id={this.state.ownerAccounts[i].accountId}
-            name={this.state.ownerAccounts[i].name}
-          >
+          <MDBDropdownItem id={this.state.ownerAccounts[i].accountId} name={this.state.ownerAccounts[i].name}>
             {this.state.ownerAccounts[i].name}
           </MDBDropdownItem>
         );
@@ -231,26 +237,8 @@ class MyPass extends React.Component {
         <form>
           <p className="h5 text-center mb-4">Sign in</p>
           <div className="grey-text">
-            <MDBInput
-              name="email"
-              onChange={this.inputChanged}
-              label="Type your email"
-              icon="envelope"
-              group
-              type="email"
-              validate
-              error="wrong"
-              success="right"
-            />
-            <MDBInput
-              name="password"
-              onChange={this.inputChanged}
-              label="Type your password"
-              icon="lock"
-              group
-              type="password"
-              validate
-            />
+            <MDBInput name="email" onChange={this.inputChanged} label="Type your email" icon="envelope" group type="email" validate error="wrong" success="right" />
+            <MDBInput name="password" onChange={this.inputChanged} label="Type your password" icon="lock" group type="password" validate />
           </div>
           <div className="text-center">
             <MDBBtn color="primary" onClick={this.login}>
@@ -272,34 +260,9 @@ class MyPass extends React.Component {
         <form>
           <p className="h5 text-center mb-4">Register</p>
           <div className="grey-text">
-            <MDBInput
-              name="username"
-              onChange={this.inputChanged}
-              label="Type your username"
-              icon="user"
-              group
-              type="text"
-            />
-            <MDBInput
-              name="email"
-              onChange={this.inputChanged}
-              label="Type your email"
-              icon="envelope"
-              group
-              type="email"
-              validate
-              error="wrong"
-              success="right"
-            />
-            <MDBInput
-              name="password"
-              onChange={this.inputChanged}
-              label="Type your password"
-              icon="lock"
-              group
-              type="password"
-              validate
-            />
+            <MDBInput name="username" onChange={this.inputChanged} label="Type your username" icon="user" group type="text" />
+            <MDBInput name="email" onChange={this.inputChanged} label="Type your email" icon="envelope" group type="email" validate error="wrong" success="right" />
+            <MDBInput name="password" onChange={this.inputChanged} label="Type your password" icon="lock" group type="password" validate />
           </div>
           <div className="text-center">
             <MDBDropdown style={{ paddingTop: "40px" }}>
@@ -336,13 +299,7 @@ class MyPass extends React.Component {
             logout
           </button>
           <div className="custom-file">
-            <input
-              onClick={this.fileSelected}
-              type="file"
-              className="custom-file-input"
-              id="inputGroupFile01"
-              aria-describedby="inputGroupFileAddon01"
-            />
+            <input onClick={this.fileSelected} type="file" className="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" />
 
             <label className="custom-file-label" htmlFor="inputGroupFile01">
               Choose file
@@ -350,12 +307,7 @@ class MyPass extends React.Component {
           </div>
           {renderOwners}
 
-          <MDBBtn
-            disabled={this.state.uploadDisabled}
-            color="primary"
-            className="btn btn-block"
-            onClick={this.uploadDocument}
-          >
+          <MDBBtn disabled={this.state.uploadDisabled} color="primary" className="btn btn-block" onClick={this.uploadDocument}>
             Upload
           </MDBBtn>
         </div>
@@ -375,13 +327,8 @@ class MyPass extends React.Component {
               overflow: "hidden"
             }}
           >
-            <div
-              style={{ width: "300px", height: "300px", overflow: "hidden" }}
-            >
-              <img
-                style={{ width: "400px" }}
-                src={this.state.documentUrls[i]}
-              ></img>
+            <div style={{ width: "300px", height: "300px", overflow: "hidden" }}>
+              <img style={{ width: "400px" }} src={this.state.documentUrls[i]}></img>
             </div>
             <p>{this.state.documentJwts[i]}</p>
           </div>
@@ -389,8 +336,14 @@ class MyPass extends React.Component {
       );
     }
 
+    let alert;
+
+    if (this.state.errorMessage !== undefined) {
+      alert = <MDBAlert color="danger">{this.state.errorMessage}</MDBAlert>;
+    }
     return (
       <MDBContainer style={{ paddingTop: "100px" }} className="center-vert">
+        {alert}
         <MDBRow style={{ paddingBottom: "100px" }}>
           <MDBCol></MDBCol>
           <MDBCol>
