@@ -27,7 +27,7 @@ class OwnerWorkflow extends React.Component {
   };
 
   getAccountData = async () => {
-    let res = await axios.get("http://localhost:5000/api/documenttypes/");
+    let res = await axios.get(this.props.urlBase + "/api/documenttypes/");
     console.log(res);
     this.setState({ documentTypes: res.data.documentTypes });
     this.getDocuments();
@@ -43,7 +43,7 @@ class OwnerWorkflow extends React.Component {
       formData.append("uploadForAccountName", this.state.uploadForAccountName);
       formData.append("uploadForAccountId", this.state.uploadForAccountId);
 
-      let res = await fetch("http://localhost:5000/api/uploadDocumentOnBehalfOfUser/", {
+      let res = await fetch(this.props.urlBase + "/api/uploadDocumentOnBehalfOfUser/", {
         method: "POST",
         headers: {
           authorization: "Token " + localStorage.getItem("jwt")
@@ -51,7 +51,7 @@ class OwnerWorkflow extends React.Component {
         body: formData
       });
     } else {
-      let res = await fetch("http://localhost:5000/api/documents/", {
+      let res = await fetch(this.props.urlBase + "/api/documents/", {
         method: "POST",
         headers: {
           authorization: "Token " + localStorage.getItem("jwt")
@@ -65,12 +65,12 @@ class OwnerWorkflow extends React.Component {
   };
 
   getDocuments = async () => {
-    let documentsRes = await axios.get("http://localhost:5000/api/documents/");
+    let documentsRes = await axios.get(this.props.urlBase + "/api/documents/");
     let documents = documentsRes.data.documents;
     let documentTypeToUrlMap = {};
 
     for (var i = 0; i < documents.length; i++) {
-      let documentUrl = "http://localhost:5000/api/documents/" + documents[i].url;
+      let documentUrl = this.props.urlBase + "/api/documents/" + documents[i].url;
       let type = documents[i].type;
       documentTypeToUrlMap[type] = documentUrl;
     }
@@ -87,7 +87,7 @@ class OwnerWorkflow extends React.Component {
       }
     };
 
-    let loginRes = await axios.post("http://localhost:5000/api/accounts/login", body);
+    let loginRes = await axios.post(this.props.urlBase + "/api/accounts/login", body);
 
     let account = loginRes.data.account;
 
@@ -112,6 +112,7 @@ class OwnerWorkflow extends React.Component {
   };
 
   componentDidMount = () => {
+    console.log(this.props.urlBase);
     let jwt = localStorage.getItem("jwt");
     if (jwt !== undefined && jwt !== "undefined") {
       axios.defaults.headers.common["Authorization"] = "Bearer " + jwt;

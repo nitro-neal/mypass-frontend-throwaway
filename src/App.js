@@ -12,9 +12,12 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
 
+const URL_BASE = "http://34.212.27.73:5000";
+// const URL_BASE = "http://localhost:5000";
+
 function App() {
   return (
-    <OwnerWorkflow />
+    <OwnerWorkflow urlBase={URL_BASE} />
     // <Router>
     //   <div>
     //     <nav>
