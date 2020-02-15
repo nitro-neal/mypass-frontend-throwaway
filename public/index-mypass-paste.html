@@ -1,0 +1,2163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      WebFont.load({
+        google: {
+          families: [
+            "Montserrat:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic",
+            "Lato:100,100italic,300,300italic,400,400italic,700,700italic,900,900italic",
+            "Open Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic"
+          ]
+        }
+      });
+    </script>
+    <!-- [if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" type="text/javascript"></script><![endif] -->
+    <script type="text/javascript">
+      !(function(o, c) {
+        var n = c.documentElement,
+          t = " w-mod-";
+        (n.className += t + "js"), ("ontouchstart" in o || (o.DocumentTouch && c instanceof DocumentTouch)) && (n.className += t + "touch");
+      })(window, document);
+    </script>
+
+    <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="images/webclip.png" rel="apple-touch-icon" />
+
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>My Pass</title>
+
+    <style>
+      body {
+        -ms-overflow-style: none;
+        overflow: -moz-scrollbars-none;
+      }
+      body::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+    <style>
+      .left {
+        -ms-overflow-style: none;
+        overflow: -moz-scrollbars-none;
+      }
+      .left::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+  </head>
+  <body class="body-2">
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+
+    <div class="document-view">
+      <div class="preview-wrapper">
+        <div class="insurance-card">
+          <div class="div-block-97">
+            <div class="div-block-101">
+              <div class="div-block-107"></div>
+              <h1 class="heading-4">Medical Insurance Card</h1>
+            </div>
+            <div data-w-id="5c1a562a-8213-6db4-d689-590b18a1f031" class="div-block-105"><img src="images/Group-4.svg" data-w-id="5c1a562a-8213-6db4-d689-590b18a1f032" alt="" class="image-19" /></div>
+          </div>
+          <div data-duration-in="300" data-duration-out="100" class="tabs w-tabs">
+            <div class="tabs-menu w-tab-menu">
+              <a data-w-tab="Tab 1" class="preview w-inline-block w-tab-link w--current">
+                <div class="text-block-33">PREVIEW</div>
+              </a>
+              <a data-w-tab="Tab 2" class="share w-inline-block w-tab-link">
+                <div class="text-block-32">SHARE</div>
+              </a>
+              <a data-w-tab="Tab 3" class="delete w-inline-block w-tab-link">
+                <div>
+                  <div class="div-block-144"></div>
+                </div>
+              </a>
+            </div>
+            <div class="tabs-content w-tab-content">
+              <div data-w-tab="Tab 1" class="tab-pane-tab-1 w-tab-pane w--tab-active">
+                <div class="div-block-117">
+                  <div class="div-block-108">
+                    <div><img src="images/magnifying-glass-2.png" width="53" alt="" class="image-22" /></div>
+                    <img src="images/Medicare_card_new.jpg" width="581" srcset="images/Medicare_card_new-p-800.jpeg 800w, images/Medicare_card_new.jpg 1013w" sizes="100vw" alt="" class="image-31" />
+                  </div>
+                </div>
+              </div>
+              <div data-w-tab="Tab 2" class="w-tab-pane">
+                <div class="div-block-145">
+                  <div class="text-block-34">THIS FUNCTION HASN&#x27;T BEEN ENABLED YET.<br />PLEASE CHECK BACK LATER.</div>
+                </div>
+              </div>
+              <div data-w-tab="Tab 3" class="w-tab-pane">
+                <div class="div-block-146">
+                  <div>
+                    <div class="text-block-35">Are you sure you want to permanently delete this file?</div>
+                  </div>
+                  <div class="deletewrapper">
+                    <div class="deleteimagewrapper">
+                      <div class="div-block-149">
+                        <img
+                          src="images/Medicare_card_new.jpg"
+                          width="252"
+                          srcset="images/Medicare_card_new-p-800.jpeg 800w, images/Medicare_card_new.jpg 1013w"
+                          sizes="100vw"
+                          alt=""
+                          class="thumbnail med"
+                        />
+                      </div>
+                      <div class="text-block-36">Medical Insurance Card</div>
+                    </div>
+                    <div class="div-block-147">
+                      <div class="text-block-37">Deleting this file will <span class="text-span-3">permanently revoke access to all users</span>. <br />‍<br />Are you sure you wish to delete it?</div>
+                    </div>
+                  </div>
+                  <div class="div-block-148"><a href="#" class="button-7 w-button">Cancel</a><a href="#" class="button-8 w-button">Yes, delete it</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="div-block-116">
+            <div class="div-block-113">
+              <div
+                data-w-id="d7ddff31-c1da-1a7b-97dd-a47adc580bc1"
+                style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0DEG) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0DEG) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0DEG) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0DEG) skew(0, 0)"
+                class="uncollapsed"
+              ></div>
+              <div
+                data-w-id="8a04a729-ddf7-1771-523b-a11656d3d4dd"
+                style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-90DEG) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-90DEG) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-90DEG) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-90DEG) skew(0, 0)"
+                class="collapsed"
+              ></div>
+              <div class="text-block-27">File Information</div>
+            </div>
+            <div class="div-block-114">
+              <div data-w-id="e81584dc-fe84-4df6-8cd0-9bcb72bb88c1" class="file-info left">
+                <div class="columns-3 w-row">
+                  <div class="w-col w-col-4">
+                    <div class="text-block-24-copy">File</div>
+                  </div>
+                  <div class="column-12 w-col w-col-8">
+                    <div class="description">Medical Insurance Card</div>
+                  </div>
+                </div>
+                <div class="columns-3 w-row">
+                  <div class="w-col w-col-6">
+                    <div class="text-block-24-copy">Folder</div>
+                  </div>
+                  <div class="column-12 w-col w-col-6">
+                    <div class="description">Folder 2</div>
+                  </div>
+                </div>
+                <div class="columns-3 w-row">
+                  <div class="w-col w-col-6">
+                    <div class="text-block-24-copy">Uploaded By</div>
+                  </div>
+                  <div class="column-12 w-col w-col-6">
+                    <div class="description">You</div>
+                  </div>
+                </div>
+                <div class="columns-3 w-row">
+                  <div class="w-col w-col-6">
+                    <div class="text-block-24-copy">Uploaded Date</div>
+                  </div>
+                  <div class="column-12 w-col w-col-6">
+                    <div class="description">01/12/2020</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="birth-certif">
+          <div class="div-block-97">
+            <div class="div-block-101">
+              <div class="div-block-107"></div>
+              <h1 class="heading-4">Birth Certificate</h1>
+            </div>
+            <div data-w-id="be160c33-d252-a4d2-deaf-2cfbfd4ef91e" class="div-block-105"><img src="images/Group-4.svg" data-w-id="be160c33-d252-a4d2-deaf-2cfbfd4ef91f" alt="" class="image-19" /></div>
+          </div>
+          <div data-duration-in="300" data-duration-out="100" class="w-tabs">
+            <div class="tabs-menu w-tab-menu">
+              <a data-w-tab="Tab 1" class="preview w-inline-block w-tab-link w--current">
+                <div class="text-block-33">PREVIEW</div>
+              </a>
+              <a data-w-tab="Tab 2" class="share w-inline-block w-tab-link">
+                <div class="text-block-32">SHARE</div>
+              </a>
+              <a data-w-tab="Tab 3" class="delete w-inline-block w-tab-link">
+                <div>
+                  <div class="div-block-144"></div>
+                </div>
+              </a>
+            </div>
+            <div class="w-tab-content">
+              <div data-w-tab="Tab 1" class="w-tab-pane w--tab-active">
+                <div class="div-block-117">
+                  <div class="div-block-108">
+                    <img
+                      src="images/Birth-certificates-california-simplistic-us-birth-certificate-california-sample-gallery-of-birth-certificates-california.jpg"
+                      width="265"
+                      alt=""
+                      class="thumbnail birth"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div data-w-tab="Tab 2" class="w-tab-pane">
+                <div class="div-block-145">
+                  <div class="text-block-34">THIS FUNCTION HASN&#x27;T BEEN ENABLED YET.<br />PLEASE CHECK BACK LATER.</div>
+                </div>
+              </div>
+              <div data-w-tab="Tab 3" class="w-tab-pane">
+                <div class="div-block-146">
+                  <div>
+                    <div class="text-block-35">Are you sure you want to permanently delete this file?</div>
+                  </div>
+                  <div class="deletewrapper">
+                    <div class="deleteimagewrapper">
+                      <div class="div-block-149">
+                        <img
+                          src="images/Birth-certificates-california-simplistic-us-birth-certificate-california-sample-gallery-of-birth-certificates-california.jpg"
+                          width="145"
+                          alt=""
+                          class="thumbnail birth"
+                        />
+                      </div>
+                      <div class="text-block-36">Birth Certificate</div>
+                    </div>
+                    <div class="div-block-147">
+                      <div class="text-block-37">Deleting this file will <span class="text-span-3">permanently revoke access to all users</span>.<br /><br />Are you sure you want to delete it?</div>
+                    </div>
+                  </div>
+                  <div class="div-block-148"><a href="#" class="button-7 w-button">Cancel</a><a href="#" class="button-8 w-button">Yes, delete it</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="div-block-116">
+            <div class="div-block-113">
+              <div
+                data-w-id="2aa5c150-54da-ba55-a872-ebb83c51d21b"
+                style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-90DEG) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-90DEG) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-90DEG) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-90DEG) skew(0, 0)"
+                class="collapsed"
+              ></div>
+              <div
+                data-w-id="629716d0-4f39-0611-4251-7a8f42cbbe40"
+                style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0DEG) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0DEG) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0DEG) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0DEG) skew(0, 0)"
+                class="uncollapsed"
+              ></div>
+              <div class="text-block-27">File Attributes</div>
+            </div>
+            <div class="div-block-114">
+              <div class="file-info left">
+                <div class="columns-3 w-row">
+                  <div class="w-col w-col-6">
+                    <div class="text-block-24-copy">File</div>
+                  </div>
+                  <div class="column-12 w-col w-col-6">
+                    <div class="description">Birth Certificate</div>
+                  </div>
+                </div>
+                <div class="columns-3 w-row">
+                  <div class="w-col w-col-6">
+                    <div class="text-block-24-copy">Folder</div>
+                  </div>
+                  <div class="column-12 w-col w-col-6">
+                    <div class="description">Folder 1 &amp; 3</div>
+                  </div>
+                </div>
+                <div class="columns-3 w-row">
+                  <div class="w-col w-col-6">
+                    <div class="text-block-24-copy">Uploaded By</div>
+                  </div>
+                  <div class="column-12 w-col w-col-6">
+                    <div class="description">You</div>
+                  </div>
+                </div>
+                <div class="columns-3 w-row">
+                  <div class="w-col w-col-6">
+                    <div class="text-block-24-copy">Uploaded Date</div>
+                  </div>
+                  <div class="column-12 w-col w-col-6">
+                    <div class="description">01/12/2020</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="driver-s-licen">
+          <div class="div-block-97">
+            <div class="div-block-101">
+              <div class="div-block-107"></div>
+              <h1 class="heading-4">Driver&#x27;s License</h1>
+            </div>
+            <div data-w-id="86689810-d4f8-a0c4-833b-5d2cbd7b847e" class="div-block-105"><img src="images/Group-4.svg" data-w-id="86689810-d4f8-a0c4-833b-5d2cbd7b847f" alt="" class="image-19" /></div>
+          </div>
+          <div data-duration-in="300" data-duration-out="100" class="w-tabs">
+            <div class="tabs-menu w-tab-menu">
+              <a data-w-tab="Tab 1" class="preview w-inline-block w-tab-link w--current">
+                <div class="text-block-33">PREVIEW</div>
+              </a>
+              <a data-w-tab="Tab 2" class="share w-inline-block w-tab-link">
+                <div class="text-block-32">SHARE</div>
+              </a>
+              <a data-w-tab="Tab 3" class="delete w-inline-block w-tab-link">
+                <div>
+                  <div class="div-block-144"></div>
+                </div>
+              </a>
+            </div>
+            <div class="w-tab-content">
+              <div data-w-tab="Tab 1" class="w-tab-pane w--tab-active">
+                <div class="div-block-117">
+                  <div class="div-block-108"><img src="images/district-columbia-drivers-license-small.jpg" width="600" alt="" class="thumbnail dl" /></div>
+                </div>
+              </div>
+              <div data-w-tab="Tab 2" class="w-tab-pane">
+                <div class="div-block-145">
+                  <div class="text-block-34">THIS FUNCTION HASN&#x27;T BEEN ENABLED YET.<br />PLEASE CHECK BACK LATER.</div>
+                </div>
+              </div>
+              <div data-w-tab="Tab 3" class="w-tab-pane">
+                <div class="div-block-146">
+                  <div>
+                    <div class="text-block-35">Are you sure you want to permanently delete this file?</div>
+                  </div>
+                  <div class="deletewrapper">
+                    <div class="deleteimagewrapper">
+                      <div class="div-block-149"><img src="images/district-columbia-drivers-license-small.jpg" width="196" alt="" class="thumbnail med" /></div>
+                      <div class="text-block-36">Driver&#x27;s License</div>
+                    </div>
+                    <div class="div-block-147">
+                      <div class="text-block-37">Deleting this file will <span class="text-span-3">permanently revoke access to all users</span>. <br /><br />Are you sure you want to delete it?</div>
+                    </div>
+                  </div>
+                  <div class="div-block-148"><a href="#" class="button-7 w-button">Cancel</a><a href="#" class="button-8 w-button">Yes, delete it</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="div-block-116">
+            <div class="div-block-113">
+              <div
+                data-w-id="ccad856f-ff4c-e681-abb0-2ae4afb253d4"
+                style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-90DEG) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-90DEG) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-90DEG) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-90DEG) skew(0, 0)"
+                class="collapsed"
+              ></div>
+              <div
+                data-w-id="a47b4bf4-cbf2-713a-6b52-cca7d47e9905"
+                style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0DEG) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0DEG) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0DEG) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0DEG) skew(0, 0)"
+                class="uncollapsed"
+              ></div>
+              <div class="text-block-27">File Attributes</div>
+            </div>
+            <div class="div-block-114">
+              <div class="file-info left">
+                <div class="columns-3 w-row">
+                  <div class="w-col w-col-6">
+                    <div class="text-block-24-copy">File</div>
+                  </div>
+                  <div class="column-12 w-col w-col-6">
+                    <div class="description">Driver&#x27;s License</div>
+                  </div>
+                </div>
+                <div class="columns-3 w-row">
+                  <div class="w-col w-col-6">
+                    <div class="text-block-24-copy">Folder</div>
+                  </div>
+                  <div class="column-12 w-col w-col-6">
+                    <div class="description">Folder 1 &amp; 2</div>
+                  </div>
+                </div>
+                <div class="columns-3 w-row">
+                  <div class="w-col w-col-6">
+                    <div class="text-block-24-copy">Uploaded By</div>
+                  </div>
+                  <div class="column-12 w-col w-col-6">
+                    <div class="description">You</div>
+                  </div>
+                </div>
+                <div class="columns-3 w-row">
+                  <div class="w-col w-col-6">
+                    <div class="text-block-24-copy">Uploaded Date</div>
+                  </div>
+                  <div class="column-12 w-col w-col-6">
+                    <div class="description">01/12/2020</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="map-card">
+          <div class="div-block-97">
+            <div class="div-block-101">
+              <div class="div-block-107"></div>
+              <h1 class="heading-4">MAP Card</h1>
+            </div>
+            <div data-w-id="ee474751-f3bb-11c3-586e-34527ed40f21" class="div-block-105"><img src="images/Group-4.svg" data-w-id="ee474751-f3bb-11c3-586e-34527ed40f22" alt="" class="image-19" /></div>
+          </div>
+          <div data-duration-in="300" data-duration-out="100" class="w-tabs">
+            <div class="tabs-menu w-tab-menu">
+              <a data-w-tab="Tab 1" class="preview w-inline-block w-tab-link w--current">
+                <div class="text-block-33">PREVIEW</div>
+              </a>
+              <a data-w-tab="Tab 2" class="share w-inline-block w-tab-link">
+                <div class="text-block-32">SHARE</div>
+              </a>
+              <a data-w-tab="Tab 3" class="delete w-inline-block w-tab-link">
+                <div>
+                  <div class="div-block-144"></div>
+                </div>
+              </a>
+            </div>
+            <div class="w-tab-content">
+              <div data-w-tab="Tab 1" class="w-tab-pane w--tab-active">
+                <div class="div-block-117">
+                  <div class="div-block-108"><img src="images/MAP-Card.jpg" width="600" alt="" class="thumbnail map" /></div>
+                </div>
+              </div>
+              <div data-w-tab="Tab 2" class="w-tab-pane">
+                <div class="div-block-145">
+                  <div class="text-block-34">THIS FUNCTION HASN&#x27;T BEEN ENABLED YET.<br />PLEASE CHECK BACK LATER.</div>
+                </div>
+              </div>
+              <div data-w-tab="Tab 3" class="w-tab-pane">
+                <div class="div-block-146">
+                  <div>
+                    <div class="text-block-35">Are you sure you want to permanently delete this file?</div>
+                  </div>
+                  <div class="deletewrapper">
+                    <div class="deleteimagewrapper">
+                      <div class="div-block-149"><img src="images/MAP-Card.jpg" width="192" alt="" class="thumbnail med" /></div>
+                      <div class="text-block-36">MAP Card</div>
+                    </div>
+                    <div class="div-block-147">
+                      <div class="text-block-37">Deleting this file will <span class="text-span-3">permanently revoke access to all users</span>.<br /><br />Are you sure you wish to delete it?</div>
+                    </div>
+                  </div>
+                  <div class="div-block-148"><a href="#" class="button-7 w-button">Cancel</a><a href="#" class="button-8 w-button">Yes, delete it</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="div-block-116">
+            <div class="div-block-113">
+              <div
+                data-w-id="6369c5dc-0a86-4f96-03b9-83ed45deb875"
+                style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0DEG) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0DEG) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0DEG) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0DEG) skew(0, 0)"
+                class="uncollapsed"
+              ></div>
+              <div
+                data-w-id="ef4f14cb-0bdb-7489-dc83-c9f752bacd58"
+                style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-90DEG) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-90DEG) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-90DEG) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-90DEG) skew(0, 0)"
+                class="collapsed"
+              ></div>
+              <div class="text-block-27">File Attributes</div>
+            </div>
+            <div class="div-block-114">
+              <div class="file-info left">
+                <div class="columns-3 w-row">
+                  <div class="w-col w-col-6">
+                    <div class="text-block-24-copy">File</div>
+                  </div>
+                  <div class="column-12 w-col w-col-6">
+                    <div class="description">MAP Card</div>
+                  </div>
+                </div>
+                <div class="columns-3 w-row">
+                  <div class="w-col w-col-6">
+                    <div class="text-block-24-copy">Folder</div>
+                  </div>
+                  <div class="column-12 w-col w-col-6">
+                    <div class="description">Folder 1 &amp; 2</div>
+                  </div>
+                </div>
+                <div class="columns-3 w-row">
+                  <div class="w-col w-col-6">
+                    <div class="text-block-24-copy">Uploaded By</div>
+                  </div>
+                  <div class="column-12 w-col w-col-6">
+                    <div class="description">You</div>
+                  </div>
+                </div>
+                <div class="columns-3 w-row">
+                  <div class="w-col w-col-6">
+                    <div class="text-block-24-copy">Uploaded Date</div>
+                  </div>
+                  <div class="column-12 w-col w-col-6">
+                    <div class="description">01/12/2020</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="social-sec-card">
+          <div class="div-block-97">
+            <div class="div-block-101">
+              <div class="div-block-107"></div>
+              <h1 class="heading-4">Social Security Card</h1>
+            </div>
+            <div data-w-id="ea922217-6d04-cc39-1bc7-aaa529c30bc4" class="div-block-105"><img src="images/Group-4.svg" data-w-id="ea922217-6d04-cc39-1bc7-aaa529c30bc5" alt="" class="image-19" /></div>
+          </div>
+          <div data-duration-in="300" data-duration-out="100" class="w-tabs">
+            <div class="tabs-menu w-tab-menu">
+              <a data-w-tab="Tab 1" class="preview w-inline-block w-tab-link w--current">
+                <div class="text-block-33">PREVIEW</div>
+              </a>
+              <a data-w-tab="Tab 2" class="share w-inline-block w-tab-link">
+                <div class="text-block-32">SHARE</div>
+              </a>
+              <a data-w-tab="Tab 3" class="delete w-inline-block w-tab-link">
+                <div>
+                  <div class="div-block-144"></div>
+                </div>
+              </a>
+            </div>
+            <div class="w-tab-content">
+              <div data-w-tab="Tab 1" class="w-tab-pane w--tab-active">
+                <div class="div-block-117">
+                  <div class="div-block-108"><img src="images/How-to-Get-a-New-Replacement-Social-Security-Card.jpg" alt="" class="thumbnail soc" /></div>
+                </div>
+              </div>
+              <div data-w-tab="Tab 2" class="w-tab-pane">
+                <div class="div-block-145">
+                  <div class="text-block-34">THIS FUNCTION HASN&#x27;T BEEN ENABLED YET.<br />PLEASE CHECK BACK LATER.</div>
+                </div>
+              </div>
+              <div data-w-tab="Tab 3" class="w-tab-pane">
+                <div class="div-block-146">
+                  <div>
+                    <div class="text-block-35">Are you sure you want to permanently delete this file?</div>
+                  </div>
+                  <div class="deletewrapper">
+                    <div class="deleteimagewrapper">
+                      <div class="div-block-149"><img src="images/How-to-Get-a-New-Replacement-Social-Security-Card.jpg" width="220" alt="" class="thumbnail med" /></div>
+                      <div class="text-block-36">Social Security Card</div>
+                    </div>
+                    <div class="div-block-147">
+                      <div class="text-block-37">Deleting this file will <span class="text-span-3">permanently revoke access to all users</span>.<br /><br />Are you sure you wish to delete it?</div>
+                    </div>
+                  </div>
+                  <div class="div-block-148"><a href="#" class="button-7 w-button">Cancel</a><a href="#" class="button-8 w-button">Yes, delete it</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="div-block-116">
+            <div class="div-block-113">
+              <div
+                data-w-id="19247f03-4276-d9af-8304-82bcfba6dce6"
+                style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-90DEG) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-90DEG) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-90DEG) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-90DEG) skew(0, 0)"
+                class="collapsed"
+              ></div>
+              <div
+                data-w-id="5f6ad188-ef67-c235-d5df-87f6aa6bd2a3"
+                style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0DEG) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0DEG) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0DEG) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0DEG) skew(0, 0)"
+                class="uncollapsed"
+              ></div>
+              <div class="text-block-27">File Attributes</div>
+            </div>
+            <div class="div-block-114">
+              <div class="file-info left">
+                <div class="columns-3 w-row">
+                  <div class="w-col w-col-6">
+                    <div class="text-block-24-copy">File</div>
+                  </div>
+                  <div class="column-12 w-col w-col-6">
+                    <div class="description">Social Security</div>
+                  </div>
+                </div>
+                <div class="columns-3 w-row">
+                  <div class="w-col w-col-6">
+                    <div class="text-block-24-copy">Folder</div>
+                  </div>
+                  <div class="column-12 w-col w-col-6">
+                    <div class="description">Folder 3</div>
+                  </div>
+                </div>
+                <div class="columns-3 w-row">
+                  <div class="w-col w-col-6">
+                    <div class="text-block-24-copy">Uploaded By</div>
+                  </div>
+                  <div class="column-12 w-col w-col-6">
+                    <div class="description">You</div>
+                  </div>
+                </div>
+                <div class="columns-3 w-row">
+                  <div class="w-col w-col-6">
+                    <div class="text-block-24-copy">Uploaded Date</div>
+                  </div>
+                  <div class="column-12 w-col w-col-6">
+                    <div class="description">01/12/2020</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="passportt">
+          <div class="div-block-97">
+            <div class="div-block-101">
+              <div class="div-block-107"></div>
+              <h1 class="heading-4">Passport</h1>
+            </div>
+            <div data-w-id="4f6a3965-6ea7-5883-66dd-976b7c0c4857" class="div-block-105"><img src="images/Group-4.svg" data-w-id="4f6a3965-6ea7-5883-66dd-976b7c0c4858" alt="" class="image-19" /></div>
+          </div>
+          <div data-duration-in="300" data-duration-out="100" class="w-tabs">
+            <div class="tabs-menu w-tab-menu">
+              <a data-w-tab="Tab 1" class="preview w-inline-block w-tab-link w--current">
+                <div class="text-block-33">PREVIEW</div>
+              </a>
+              <a data-w-tab="Tab 2" class="share w-inline-block w-tab-link">
+                <div class="text-block-32">SHARE</div>
+              </a>
+              <a data-w-tab="Tab 3" class="delete w-inline-block w-tab-link">
+                <div>
+                  <div class="div-block-144"></div>
+                </div>
+              </a>
+            </div>
+            <div class="w-tab-content">
+              <div data-w-tab="Tab 1" class="w-tab-pane w--tab-active">
+                <div class="div-block-117">
+                  <div class="div-block-108">
+                    <img
+                      src="images/d8f9002b5eed18a459cc140155d6f7ff.jpg"
+                      width="281"
+                      srcset="images/d8f9002b5eed18a459cc140155d6f7ff-p-500.jpeg 500w, images/d8f9002b5eed18a459cc140155d6f7ff-p-800.jpeg 800w, images/d8f9002b5eed18a459cc140155d6f7ff.jpg 976w"
+                      sizes="100vw"
+                      alt=""
+                      class="thumbnail pass"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div data-w-tab="Tab 2" class="w-tab-pane">
+                <div class="div-block-145">
+                  <div class="text-block-34">THIS FUNCTION HASN&#x27;T BEEN ENABLED YET.<br />PLEASE CHECK BACK LATER.</div>
+                </div>
+              </div>
+              <div data-w-tab="Tab 3" class="w-tab-pane">
+                <div class="div-block-146">
+                  <div>
+                    <div class="text-block-35">Are you sure you want to permanently delete this file?</div>
+                  </div>
+                  <div class="deletewrapper">
+                    <div class="deleteimagewrapper">
+                      <div class="div-block-149">
+                        <img
+                          src="images/d8f9002b5eed18a459cc140155d6f7ff.jpg"
+                          width="145"
+                          srcset="images/d8f9002b5eed18a459cc140155d6f7ff-p-500.jpeg 500w, images/d8f9002b5eed18a459cc140155d6f7ff-p-800.jpeg 800w, images/d8f9002b5eed18a459cc140155d6f7ff.jpg 976w"
+                          sizes="100vw"
+                          alt=""
+                          class="thumbnail med"
+                        />
+                      </div>
+                      <div class="text-block-36">Passport</div>
+                    </div>
+                    <div class="div-block-147">
+                      <div class="text-block-37">Deleting this file will <span class="text-span-3">permanently revoke access to all users</span>.<br /><br />Are you sure you wish to delete it?</div>
+                    </div>
+                  </div>
+                  <div class="div-block-148"><a href="#" class="button-7 w-button">Cancel</a><a href="#" class="button-8 w-button">Yes, delete it</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="div-block-116">
+            <div class="div-block-113">
+              <div
+                data-w-id="55b55132-e0c3-d919-f647-cc2279a8de24"
+                style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0DEG) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0DEG) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0DEG) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0DEG) skew(0, 0)"
+                class="uncollapsed"
+              ></div>
+              <div
+                data-w-id="0a3580da-8ba9-76d8-accc-991211005063"
+                style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-90DEG) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-90DEG) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-90DEG) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-90DEG) skew(0, 0)"
+                class="collapsed"
+              ></div>
+              <div class="text-block-27">File Attributes</div>
+            </div>
+            <div class="div-block-114">
+              <div class="file-info left">
+                <div class="columns-3 w-row">
+                  <div class="w-col w-col-6">
+                    <div class="text-block-24-copy">File</div>
+                  </div>
+                  <div class="column-12 w-col w-col-6">
+                    <div class="description">Passport</div>
+                  </div>
+                </div>
+                <div class="columns-3 w-row">
+                  <div class="w-col w-col-6">
+                    <div class="text-block-24-copy">Folder</div>
+                  </div>
+                  <div class="column-12 w-col w-col-6">
+                    <div class="description">Folder 1 &amp; 2</div>
+                  </div>
+                </div>
+                <div class="columns-3 w-row">
+                  <div class="w-col w-col-6">
+                    <div class="text-block-24-copy">Uploaded By</div>
+                  </div>
+                  <div class="column-12 w-col w-col-6">
+                    <div class="description">You</div>
+                  </div>
+                </div>
+                <div class="columns-3 w-row">
+                  <div class="w-col w-col-6">
+                    <div class="text-block-24-copy">Uploaded Date</div>
+                  </div>
+                  <div class="column-12 w-col w-col-6">
+                    <div class="description">01/12/2020</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ead-card">
+          <div class="div-block-97">
+            <div class="div-block-101">
+              <div class="div-block-107"></div>
+              <h1 class="heading-4">EAD Card</h1>
+            </div>
+            <div data-w-id="5f674526-0253-d07c-16c1-49990cfa9906" class="div-block-105"><img src="images/Group-4.svg" data-w-id="5f674526-0253-d07c-16c1-49990cfa9907" alt="" class="image-19" /></div>
+          </div>
+          <div data-duration-in="300" data-duration-out="100" class="w-tabs">
+            <div class="tabs-menu w-tab-menu">
+              <a data-w-tab="Tab 1" class="preview w-inline-block w-tab-link w--current">
+                <div class="text-block-33">PREVIEW</div>
+              </a>
+              <a data-w-tab="Tab 2" class="share w-inline-block w-tab-link">
+                <div class="text-block-32">SHARE</div>
+              </a>
+              <a data-w-tab="Tab 3" class="delete w-inline-block w-tab-link">
+                <div>
+                  <div class="div-block-144"></div>
+                </div>
+              </a>
+            </div>
+            <div class="w-tab-content">
+              <div data-w-tab="Tab 1" class="w-tab-pane w--tab-active">
+                <div class="div-block-117">
+                  <div class="div-block-108"><img src="images/dsafg.jpg" srcset="images/dsafg-p-500.jpeg 500w, images/dsafg.jpg 605w" sizes="100vw" alt="" class="thumbnail ead" /></div>
+                </div>
+              </div>
+              <div data-w-tab="Tab 2" class="w-tab-pane">
+                <div class="div-block-145">
+                  <div class="text-block-34">THIS FUNCTION HASN&#x27;T BEEN ENABLED YET.<br />PLEASE CHECK BACK LATER.</div>
+                </div>
+              </div>
+              <div data-w-tab="Tab 3" class="w-tab-pane">
+                <div class="div-block-146">
+                  <div>
+                    <div class="text-block-35">Are you sure you want to permanently delete this file?</div>
+                  </div>
+                  <div class="deletewrapper">
+                    <div class="deleteimagewrapper">
+                      <div class="div-block-149">
+                        <img src="images/dsafg.jpg" width="188" srcset="images/dsafg-p-500.jpeg 500w, images/dsafg.jpg 605w" sizes="100vw" alt="" class="thumbnail med" />
+                      </div>
+                      <div class="text-block-36">EAD Card</div>
+                    </div>
+                    <div class="div-block-147">
+                      <div class="text-block-37">Deleting this file will <span class="text-span-3">permanently revoke access to all users</span>.<br />‍<br />Are you sure you wish to delete it?</div>
+                    </div>
+                  </div>
+                  <div class="div-block-148"><a href="#" class="button-7 w-button">Cancel</a><a href="#" class="button-8 w-button">Yes, delete it</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="div-block-116">
+            <div class="div-block-113">
+              <div
+                data-w-id="544017ab-59a4-1c1b-5ce0-94b184166874"
+                style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-90DEG) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-90DEG) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-90DEG) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-90DEG) skew(0, 0)"
+                class="collapsed"
+              ></div>
+              <div
+                data-w-id="8097f299-0332-9087-1695-76dbd24eb668"
+                style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0DEG) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0DEG) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0DEG) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0DEG) skew(0, 0)"
+                class="uncollapsed"
+              ></div>
+              <div class="text-block-27">File Attributes</div>
+            </div>
+            <div class="div-block-114">
+              <div class="file-info left">
+                <div class="columns-3 w-row">
+                  <div class="w-col w-col-6">
+                    <div class="text-block-24-copy">File</div>
+                  </div>
+                  <div class="column-12 w-col w-col-6">
+                    <div class="description">EAD Card</div>
+                  </div>
+                </div>
+                <div class="columns-3 w-row">
+                  <div class="w-col w-col-6">
+                    <div class="text-block-24-copy">Folder</div>
+                  </div>
+                  <div class="column-12 w-col w-col-6">
+                    <div class="description">Folder 1</div>
+                  </div>
+                </div>
+                <div class="columns-3 w-row">
+                  <div class="w-col w-col-6">
+                    <div class="text-block-24-copy">Uploaded By</div>
+                  </div>
+                  <div class="column-12 w-col w-col-6">
+                    <div class="description">You</div>
+                  </div>
+                </div>
+                <div class="columns-3 w-row">
+                  <div class="w-col w-col-6">
+                    <div class="text-block-24-copy">Uploaded Date</div>
+                  </div>
+                  <div class="column-12 w-col w-col-6">
+                    <div class="description">01/12/2020</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="marriage-certificate">
+          <div class="div-block-97">
+            <div class="div-block-101">
+              <div class="div-block-107"></div>
+              <h1 class="heading-4">Marriage Certificate</h1>
+            </div>
+            <div data-w-id="9ecb71ef-1618-6777-fa3e-d16229a621fd" class="div-block-105"><img src="images/Group-4.svg" data-w-id="9ecb71ef-1618-6777-fa3e-d16229a621fe" alt="" class="image-19" /></div>
+          </div>
+          <div data-duration-in="300" data-duration-out="100" class="w-tabs">
+            <div class="tabs-menu w-tab-menu">
+              <a data-w-tab="Tab 1" class="preview w-inline-block w-tab-link">
+                <div class="text-block-33">PREVIEW</div>
+              </a>
+              <a data-w-tab="Tab 2" class="share w-inline-block w-tab-link">
+                <div class="text-block-32">SHARE</div>
+              </a>
+              <a data-w-tab="Tab 3" class="delete w-inline-block w-tab-link w--current">
+                <div>
+                  <div class="div-block-144"></div>
+                </div>
+              </a>
+            </div>
+            <div class="w-tab-content">
+              <div data-w-tab="Tab 1" class="w-tab-pane">
+                <div class="div-block-117">
+                  <div class="div-block-108"><img src="images/marriage-certificate-and-court-marriage-500x500.png" width="600" alt="" class="thumbnail marr" /></div>
+                </div>
+              </div>
+              <div data-w-tab="Tab 2" class="w-tab-pane">
+                <div class="div-block-145">
+                  <div class="text-block-34">THIS FUNCTION HASN&#x27;T BEEN ENABLED YET.<br />PLEASE CHECK BACK LATER.</div>
+                </div>
+              </div>
+              <div data-w-tab="Tab 3" class="w-tab-pane w--tab-active">
+                <div class="div-block-146">
+                  <div>
+                    <div class="text-block-35">Are you sure you want to permanently delete this file?</div>
+                  </div>
+                  <div class="deletewrapper">
+                    <div class="deleteimagewrapper">
+                      <div class="div-block-149"><img src="images/marriage-certificate-and-court-marriage-500x500.png" width="145" alt="" class="thumbnail med" /></div>
+                      <div class="text-block-36">Marriage Certificate</div>
+                    </div>
+                    <div class="div-block-147">
+                      <div class="text-block-37">Deleting this file will <span class="text-span-3">permanently revoke access to all users</span>.<br /><br />Are you sure you wish to delete it?</div>
+                    </div>
+                  </div>
+                  <div class="div-block-148"><a href="#" class="button-7 w-button">Cancel</a><a href="#" class="button-8 w-button">Yes, delete it</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="div-block-116">
+            <div class="div-block-113">
+              <div
+                data-w-id="f3ea2852-7194-b70d-bc16-d340b287b94f"
+                style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-90DEG) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-90DEG) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-90DEG) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-90DEG) skew(0, 0)"
+                class="collapsed"
+              ></div>
+              <div
+                data-w-id="24357957-b63d-1a96-9c12-b1aacbf59886"
+                style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0DEG) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0DEG) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0DEG) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0DEG) skew(0, 0)"
+                class="uncollapsed"
+              ></div>
+              <div class="text-block-27">File Attributes</div>
+            </div>
+            <div class="div-block-114">
+              <div class="file-info left">
+                <div class="columns-3 w-row">
+                  <div class="column-13 w-col w-col-5">
+                    <div class="text-block-24-copy">File</div>
+                  </div>
+                  <div class="column-12 w-col w-col-7">
+                    <div class="description">Certificate of Marriage</div>
+                  </div>
+                </div>
+                <div class="columns-3 w-row">
+                  <div class="w-col w-col-5">
+                    <div class="text-block-24-copy">Folder</div>
+                  </div>
+                  <div class="column-12 w-col w-col-7">
+                    <div class="description">Folder 2</div>
+                  </div>
+                </div>
+                <div class="columns-3 w-row">
+                  <div class="w-col w-col-5">
+                    <div class="text-block-24-copy">Uploaded By</div>
+                  </div>
+                  <div class="column-12 w-col w-col-7">
+                    <div class="description">You</div>
+                  </div>
+                </div>
+                <div class="columns-3 w-row">
+                  <div class="w-col w-col-5">
+                    <div class="text-block-24-copy">Uploaded Date</div>
+                  </div>
+                  <div class="column-12 w-col w-col-7">
+                    <div class="description">01/12/2020</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-w-id="ef57a6ab-17d4-48fc-9f08-44d2271d7b60" class="div-block-119"></div>
+    </div>
+    <div class="upload-pop-up">
+      <div class="upload-wrapper">
+        <div class="div-block-97">
+          <div class="div-block-101">
+            <div class="div-block-41 file upload">
+              <div class="div-block-95 upload"></div>
+            </div>
+            <h1 class="heading-4">Upload New File</h1>
+          </div>
+          <div class="div-block-105"><img src="images/Group-4.svg" data-w-id="530e6f45-a212-2d43-a4b4-1b527f765e01" alt="" class="image-19" /></div>
+        </div>
+        <div class="w-form">
+          <form id="email-form" name="email-form" data-name="Email Form">
+            <div class="div-block-96">
+              <div class="text-block-24">File</div>
+              <div class="div-block-98">
+                <div class="text-block-25">filename.ext</div>
+                <a href="#" class="button-5 w-button">Browse from device</a>
+              </div>
+            </div>
+            <div class="text-block-24 folder">Name</div>
+            <div>
+              <div>
+                <input type="text" class="text-field-4 w-input" maxlength="256" name="name" data-name="Name" placeholder="Name" id="name" required="" /><input
+                  type="text"
+                  class="text-field-5 w-input"
+                  maxlength="256"
+                  name="name-3"
+                  data-name="Name 3"
+                  placeholder="Expiration Date"
+                  id="name-3"
+                  required=""
+                />
+              </div>
+            </div>
+            <div class="div-block-131">
+              <div data-w-id="5b5577a3-d9c9-3d7b-08e3-7c383cac9058" class="div-block-110 uploadview"></div>
+              <div class="text-block-24 folder drop">Folder</div>
+            </div>
+            <div class="div-block-125">
+              <div class="folder-2 left">
+                <div class="div-block-128">
+                  <div data-w-id="3adca966-1626-fef4-1d32-8b4098d6bcef" class="upload-folder pro">
+                    <div class="div-block-52">
+                      <div class="upload-folder-text">SHARED WITH</div>
+                      <div class="upload-folder-profile-wrapper left">
+                        <div class="upload-folder-profiles">
+                          <div class="div-block-123"></div>
+                          <div class="div-block-123"></div>
+                          <div class="div-block-123"></div>
+                          <div class="div-block-123"></div>
+                          <div class="div-block-123"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="folder-upload-text-title">
+                      <div class="upload-folder-folder-title">FOLDER</div>
+                      <p class="upload-folder-text-1">Folder #2</p>
+                    </div>
+                  </div>
+                  <div data-w-id="3adca966-1626-fef4-1d32-8b4098d6bccf" class="upload-folder pro">
+                    <div class="div-block-52">
+                      <div class="upload-folder-text">SHARED WITH</div>
+                      <div class="upload-folder-profile-wrapper left">
+                        <div class="upload-folder-profiles">
+                          <div class="div-block-123"></div>
+                          <div class="div-block-123"></div>
+                          <div class="div-block-123"></div>
+                          <div class="div-block-123"></div>
+                          <div class="div-block-123"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="folder-upload-text-title">
+                      <div class="upload-folder-folder-title">FOLDER</div>
+                      <p class="upload-folder-text-1">Folder #1</p>
+                    </div>
+                  </div>
+                  <div data-w-id="3adca966-1626-fef4-1d32-8b4098d6bcff" class="upload-folder pro">
+                    <div class="div-block-52">
+                      <div class="upload-folder-text">SHARED WITH</div>
+                      <div class="upload-folder-profile-wrapper left">
+                        <div class="upload-folder-profiles">
+                          <div class="div-block-123"></div>
+                          <div class="div-block-123"></div>
+                          <div class="div-block-123"></div>
+                          <div class="div-block-123"></div>
+                          <div class="div-block-123"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="folder-upload-text-title">
+                      <div class="upload-folder-folder-title">FOLDER</div>
+                      <p class="upload-folder-text-1">Folder #3</p>
+                    </div>
+                  </div>
+                </div>
+                <div data-w-id="3adca966-1626-fef4-1d32-8b4098d6bcdf" class="upload-folder selected">
+                  <div class="div-block-52">
+                    <div class="upload-folder-text">SHARED WITH</div>
+                    <div class="upload-folder-profile-wrapper left">
+                      <div class="upload-folder-profiles">
+                        <div class="div-block-123"></div>
+                        <div class="div-block-123"></div>
+                        <div class="div-block-123"></div>
+                        <div class="div-block-123"></div>
+                        <div class="div-block-123"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="folder-upload-text-title">
+                    <div class="upload-folder-folder-title">FOLDER</div>
+                    <p class="upload-folder-text-1">Folder #1</p>
+                  </div>
+                </div>
+                <div data-w-id="41fd8b3c-8a62-f887-42b3-1d4f429349bd" class="upload-folder selected">
+                  <div class="div-block-52">
+                    <div class="upload-folder-text">SHARED WITH</div>
+                    <div class="upload-folder-profile-wrapper left">
+                      <div class="upload-folder-profiles">
+                        <div class="div-block-123"></div>
+                        <div class="div-block-123"></div>
+                        <div class="div-block-123"></div>
+                        <div class="div-block-123"></div>
+                        <div class="div-block-123"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="folder-upload-text-title">
+                    <div class="upload-folder-folder-title">FOLDER</div>
+                    <p class="upload-folder-text-1">Folder #2</p>
+                  </div>
+                </div>
+                <select id="Unsorted-Default-2" name="Unsorted-Default-2" data-name="Unsorted Default 2" multiple="" class="select-field-2 w-select"
+                  ><option value="">Unsorted (Default)</option
+                  ><option value="First">Application Package #1</option
+                  ><option value="Second">Application Package #2</option
+                  ><option value="Third">Application Package #3</option></select
+                >
+                <div class="div-block-99"></div>
+                <div data-w-id="fc9afce6-9442-25fd-8012-52589433a36c" class="upload-folder selected">
+                  <div class="div-block-52">
+                    <div class="upload-folder-text">SHARED WITH</div>
+                    <div class="upload-folder-profile-wrapper left">
+                      <div class="upload-folder-profiles">
+                        <div class="div-block-123"></div>
+                        <div class="div-block-123"></div>
+                        <div class="div-block-123"></div>
+                        <div class="div-block-123"></div>
+                        <div class="div-block-123"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="folder-upload-text-title">
+                    <div class="upload-folder-folder-title">FOLDER</div>
+                    <p class="upload-folder-text-1">Folder #3</p>
+                  </div>
+                </div>
+              </div>
+              <div class="div-block-126">
+                <div data-w-id="38188934-5e5f-4f3d-9f4e-5cf869903133" class="div-block-127"></div>
+              </div>
+            </div>
+            <div class="div-block-131 file">
+              <div class="text-block-24 folder drop">File</div>
+            </div>
+            <div class="grid-view-upload left">
+              <div class="div-block-89">
+                <div data-w-id="ae186905-0ced-17c6-dc08-b051685bdb3a" class="div-block-87">
+                  <div class="div-block-118">
+                    <div class="div-block-88-upload-view"></div>
+                  </div>
+                  <div class="paragraph-upload-view file">Medical Insurance Card</div>
+                </div>
+                <div data-w-id="58b546b9-920a-7900-e5ac-2ce0832c10d1" class="div-block-87 uploadview">
+                  <div class="div-block-118">
+                    <div class="div-block-88-upload-view birth"></div>
+                  </div>
+                  <div class="paragraph-upload-view file">Birth Certificate</div>
+                </div>
+                <div data-w-id="953ef525-4758-7826-5d02-c7443af6487d" class="div-block-87">
+                  <div class="div-block-118">
+                    <div class="div-block-88-upload-view dl"></div>
+                  </div>
+                  <div class="paragraph-upload-view file">Driver&#x27;s License</div>
+                </div>
+                <div data-w-id="f1b8a33f-cdc4-9367-4a51-80be41d4dd4e" class="div-block-87">
+                  <div class="div-block-118">
+                    <div class="div-block-88-upload-view map"></div>
+                  </div>
+                  <div class="paragraph-upload-view file">Map Card</div>
+                </div>
+                <div data-w-id="bad91b7a-3ca0-5ba6-9f06-64d949b12369" class="div-block-87">
+                  <div class="div-block-118">
+                    <div class="div-block-88-upload-view soc"></div>
+                  </div>
+                  <div class="paragraph-upload-view file">Social Security Card</div>
+                </div>
+                <div data-w-id="4cb457d6-3bd9-aa17-2692-5d7330865f30" class="div-block-87">
+                  <div class="div-block-118">
+                    <div class="div-block-88-upload-view pass"></div>
+                  </div>
+                  <div class="paragraph-upload-view file">Passport</div>
+                </div>
+                <div data-w-id="41f57603-1af0-c9a7-3b63-c1e72954ab2d" class="div-block-87">
+                  <div class="div-block-118">
+                    <div class="div-block-88-upload-view ead"></div>
+                  </div>
+                  <div class="paragraph-upload-view file">EAD Card</div>
+                </div>
+                <div data-w-id="90853fc7-3129-6d4a-96f1-ddaf6f6ff69b" class="div-block-87">
+                  <div class="div-block-118">
+                    <div class="div-block-88-upload-view marr"></div>
+                  </div>
+                  <div class="paragraph-upload-view file">Marriage Certificate</div>
+                </div>
+              </div>
+            </div>
+            <div class="folder">
+              <select id="Unsorted-Default" name="Unsorted-Default" data-name="Unsorted (Default)" multiple="" class="select-field w-select"
+                ><option value="">Unsorted (Default)</option
+                ><option value="First">Application Package #1</option
+                ><option value="Second">Application Package #2</option
+                ><option value="Third">Application Package #3</option></select
+              >
+              <div class="div-block-99"></div>
+            </div>
+            <div class="div-block-100">
+              <input type="submit" value="Upload" data-wait="Please wait..." data-w-id="65448cac-be81-36fc-3696-004f42c58304" class="submit-button w-button" /><a
+                data-w-id="3f0bf040-22af-67f3-db10-bb1cd1066e30"
+                href="#"
+                class="button-6 w-button"
+                >Upload</a
+              >
+            </div>
+          </form>
+          <div class="w-form-done">
+            <div>Thank you! Your submission has been received!</div>
+          </div>
+          <div class="w-form-fail">
+            <div>Oops! Something went wrong while submitting the form.</div>
+          </div>
+        </div>
+      </div>
+      <div data-w-id="236e67f9-a19a-da5f-7398-895eba6e8ac3" class="div-block-119"></div>
+    </div>
+    <div class="new-folder-pop-up">
+      <div class="new-folder-wrapper">
+        <div class="div-block-97">
+          <div class="div-block-101">
+            <div class="div-block-41 new">
+              <div class="div-block-94 new"></div>
+            </div>
+            <h1 class="heading-4">New Folder</h1>
+          </div>
+          <div class="div-block-105"><img src="images/Group-4.svg" data-w-id="ce10dcb4-93d7-10ae-5927-c49e809a5338" alt="" class="image-19" /></div>
+        </div>
+        <div>
+          <div class="w-form">
+            <form id="email-form" name="email-form" data-name="Email Form" class="form-4">
+              <div>
+                <div class="text-block-24 folder text-block-28">Name</div>
+              </div>
+              <input type="text" class="folder-text w-input" maxlength="256" name="name-2" data-name="Name 2" placeholder="Folder Name" id="name-2" />
+              <div class="div-block-150">
+                <div class="text-block-24">Add files to folder...</div>
+              </div>
+              <div class="div-block-100"><input type="submit" value="Create" data-wait="Please wait..." class="submit-button w-button" /></div>
+              <div class="grid-view-folder left">
+                <div class="div-block-89">
+                  <div data-w-id="b00caf0f-f740-5be4-2375-4f0e379abcdc" class="div-block-87 new-folder">
+                    <div class="div-block-118">
+                      <div class="div-block-88-upload-view"></div>
+                    </div>
+                    <div class="paragraph-upload-view file">Medical Insurance Card</div>
+                  </div>
+                  <div data-w-id="b00caf0f-f740-5be4-2375-4f0e379abce1" class="div-block-87 new-folder">
+                    <div class="div-block-118">
+                      <div class="div-block-88-upload-view birth"></div>
+                    </div>
+                    <div class="paragraph-upload-view file">Birth Certificate</div>
+                  </div>
+                  <div data-w-id="b00caf0f-f740-5be4-2375-4f0e379abce6" class="div-block-87 new-folder">
+                    <div class="div-block-118">
+                      <div class="div-block-88-upload-view dl"></div>
+                    </div>
+                    <div class="paragraph-upload-view file">Driver&#x27;s License</div>
+                  </div>
+                  <div data-w-id="b00caf0f-f740-5be4-2375-4f0e379abceb" class="div-block-87 new-folder">
+                    <div class="div-block-118">
+                      <div class="div-block-88-upload-view map"></div>
+                    </div>
+                    <div class="paragraph-upload-view file">Map Card</div>
+                  </div>
+                  <div data-w-id="b00caf0f-f740-5be4-2375-4f0e379abcf0" class="div-block-87 new-folder">
+                    <div class="div-block-118">
+                      <div class="div-block-88-upload-view soc"></div>
+                    </div>
+                    <div class="paragraph-upload-view file">Social Security Card</div>
+                  </div>
+                  <div data-w-id="b00caf0f-f740-5be4-2375-4f0e379abcf5" class="div-block-87 new-folder">
+                    <div class="div-block-118">
+                      <div class="div-block-88-upload-view pass"></div>
+                    </div>
+                    <div class="paragraph-upload-view file">Passport</div>
+                  </div>
+                  <div data-w-id="b00caf0f-f740-5be4-2375-4f0e379abcfa" class="div-block-87 new-folder">
+                    <div class="div-block-118">
+                      <div class="div-block-88-upload-view ead"></div>
+                    </div>
+                    <div class="paragraph-upload-view file">EAD Card</div>
+                  </div>
+                  <div data-w-id="b00caf0f-f740-5be4-2375-4f0e379abcff" class="div-block-87 new-folder">
+                    <div class="div-block-118">
+                      <div class="div-block-88-upload-view marr"></div>
+                    </div>
+                    <div class="paragraph-upload-view file">Marriage Certificate</div>
+                  </div>
+                </div>
+              </div>
+            </form>
+            <div class="w-form-done">
+              <div>Thank you! Your submission has been received!</div>
+            </div>
+            <div class="w-form-fail">
+              <div>Oops! Something went wrong while submitting the form.</div>
+            </div>
+          </div>
+        </div>
+        <div class="div-block-124"><a data-w-id="c526a8fb-7039-7e72-4708-c03abbaf3fe9" href="#" class="button-6 w-button">Create</a></div>
+      </div>
+      <div data-w-id="71532573-65f6-3f7c-0cc9-73993be6dcb9" class="div-block-119"></div>
+    </div>
+    <div class="folder-pop-up">
+      <div class="new-folder-wrapper">
+        <div class="div-block-97">
+          <div class="div-block-101">
+            <div class="div-block-41 new">
+              <div class="div-block-94 new"></div>
+            </div>
+            <h1 class="heading-4">Edit Folder # 1</h1>
+          </div>
+          <div class="div-block-105"><img src="images/Group-4.svg" data-w-id="8ec9f2d7-29d4-9eb6-6877-fcd990f354d9" alt="" class="image-19" /></div>
+        </div>
+        <div>
+          <div class="w-form">
+            <form id="email-form" name="email-form" data-name="Email Form" class="form-4">
+              <div class="div-block-158">
+                <div class="text-block-24">Name</div>
+                <input type="text" class="text-field-6 w-input" maxlength="256" name="name-2" data-name="Name 2" placeholder="Folder #1" id="name-2" />
+              </div>
+
+              <div class="div-block-153">
+                <div class="div-block-152">
+                  <div class="div-block-102-copy selected-copy">
+                    <div class="div-block-52-copy">
+                      <div class="text-block-13-copy">SHARED WITH</div>
+                      <div class="div-block-46 left">
+                        <div class="div-block-55">
+                          <div class="div-block-47"></div>
+                          <div class="div-block-47"></div>
+                          <div class="div-block-47"></div>
+                          <div class="div-block-47"></div>
+                          <div class="div-block-47"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="text-block-14">FOLDER</div>
+                    <p class="paragraph">Folder #1</p>
+                  </div>
+                  <div class="div-block-154">
+                    <div class="div-block-156">
+                      <div class="text-block-38">SHARED WITH</div>
+                      <div class="div-block-157"><img src="images/tools-and-utensils.svg" width="24" alt="" class="image-30" /></div>
+                    </div>
+                    <div class="div-block-155">
+                      <div class="list-profile-share-copy pro"></div>
+                      <div class="list-profile-share-copy pro"></div>
+                      <div class="list-profile-share-copy pro"></div>
+                      <div class="list-profile-share-copy pro"></div>
+                      <div class="list-profile-share-copy pro"></div>
+                      <div class="list-profile-share-copy pro"></div>
+                      <div class="list-profile-share-copy pro"></div>
+                      <div class="list-profile-share-copy pro"></div>
+                      <div class="list-profile-share-copy pro"></div>
+                      <div class="list-profile-share-copy pro"></div>
+                      <div class="list-profile-share-copy pro"></div>
+                      <div class="list-profile-share-copy pro"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="text-block-24 folder text-block-28">Name</div>
+              </div>
+              <div class="div-block-100"><input type="submit" value="Create" data-wait="Please wait..." class="submit-button w-button" /></div>
+            </form>
+            <div class="w-form-done">
+              <div>Thank you! Your submission has been received!</div>
+            </div>
+            <div class="w-form-fail">
+              <div>Oops! Something went wrong while submitting the form.</div>
+            </div>
+          </div>
+          <div class="grid-view-folder left">
+            <div class="div-block-89">
+              <div data-w-id="2cab3ac9-8365-a66f-dffd-caeeb196a0ce" class="div-block-87 new-folder">
+                <div class="div-block-118">
+                  <div class="div-block-88-upload-view"></div>
+                </div>
+                <div class="paragraph-upload-view file">Medical Insurance Card</div>
+              </div>
+              <div data-w-id="2cab3ac9-8365-a66f-dffd-caeeb196a0d3" class="div-block-87 new-folder">
+                <div class="div-block-118">
+                  <div class="div-block-88-upload-view birth"></div>
+                </div>
+                <div class="paragraph-upload-view file">Birth Certificate</div>
+              </div>
+              <div data-w-id="2cab3ac9-8365-a66f-dffd-caeeb196a0d8" class="div-block-87 new-folder">
+                <div class="div-block-118">
+                  <div class="div-block-88-upload-view dl"></div>
+                </div>
+                <div class="paragraph-upload-view file">Driver&#x27;s License</div>
+              </div>
+              <div data-w-id="2cab3ac9-8365-a66f-dffd-caeeb196a0dd" class="div-block-87 new-folder">
+                <div class="div-block-118">
+                  <div class="div-block-88-upload-view map"></div>
+                </div>
+                <div class="paragraph-upload-view file">Map Card</div>
+              </div>
+              <div data-w-id="2cab3ac9-8365-a66f-dffd-caeeb196a0e2" class="div-block-87 new-folder">
+                <div class="div-block-118">
+                  <div class="div-block-88-upload-view soc"></div>
+                </div>
+                <div class="paragraph-upload-view file">Social Security Card</div>
+              </div>
+              <div data-w-id="2cab3ac9-8365-a66f-dffd-caeeb196a0e7" class="div-block-87 new-folder">
+                <div class="div-block-118">
+                  <div class="div-block-88-upload-view pass"></div>
+                </div>
+                <div class="paragraph-upload-view file">Passport</div>
+              </div>
+              <div data-w-id="2cab3ac9-8365-a66f-dffd-caeeb196a0ec" class="div-block-87 new-folder">
+                <div class="div-block-118">
+                  <div class="div-block-88-upload-view ead"></div>
+                </div>
+                <div class="paragraph-upload-view file">EAD Card</div>
+              </div>
+              <div data-w-id="2cab3ac9-8365-a66f-dffd-caeeb196a0f1" class="div-block-87 new-folder">
+                <div class="div-block-118">
+                  <div class="div-block-88-upload-view marr"></div>
+                </div>
+                <div class="paragraph-upload-view file">Marriage Certificate</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="div-block-124"><a data-w-id="8ec9f2d7-29d4-9eb6-6877-fcd990f354ea" href="#" class="button-6 w-button">Save</a></div>
+      </div>
+      <div data-w-id="8ec9f2d7-29d4-9eb6-6877-fcd990f354ec" class="div-block-119"></div>
+    </div>
+    <div class="section-2">
+      <div class="div-block-68">
+        <div>
+          <div class="div-block-36">
+            <div data-w-id="ddbc8949-2fc3-f476-97de-60228bd6fa89" class="div-block-91"></div>
+          </div>
+        </div>
+        <div data-w-id="fd40dfd9-11f3-d26b-9e05-bf6a430b3346" class="div-block-92">
+          <div class="div-block-38">
+            <div class="div-block-93">
+              <a data-w-id="8a2d71ca-776d-b879-f4d1-5ea27d55376f" href="#" class="button-4 w-button">Upload a New File</a>
+              <ul class="list-2 w-list-unstyled">
+                <li>
+                  <div class="text-block-21">Sidebar Option #1</div>
+                  <div class="text-block-21">Sidebar Option #2</div>
+                </li>
+                <li>
+                  <div class="text-block-21">Sidebar Option #2</div>
+                </li>
+                <li>
+                  <div class="text-block-21">Sidebar Option #3</div>
+                </li>
+                <li>
+                  <div class="text-block-21">Sidebar Option #4</div>
+                </li>
+              </ul>
+            </div>
+            <div class="div-block-37"></div>
+            <div class="div-block-112"></div>
+            <div>
+              <div><img src="images/Group-970.svg" alt="" class="image-18" /></div>
+            </div>
+            <div class="div-block-57">
+              <div class="div-block-58">
+                <div class="text-block-19">Starred</div>
+              </div>
+              <div class="div-block-58 _2">
+                <div class="text-block-19">My Network</div>
+              </div>
+              <div class="div-block-58 _2">
+                <div class="text-block-19 skinny">What is Mypass?</div>
+              </div>
+              <div class="div-block-58 _2">
+                <div class="text-block-19 skinny">Can I use it everywhere?</div>
+              </div>
+              <div class="div-block-58 _2">
+                <div class="text-block-19 skinny">Privacy Policy</div>
+              </div>
+              <div class="div-block-58 _2">
+                <div class="text-block-19 skinny">Terns of Service</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="w-layout-grid grid-copy">
+        <div id="w-node-0dd96f8b1984-348d15ca"></div>
+        <div id="w-node-3c6dd1185f53-348d15ca" class="div-block-39">
+          <div class="div-block-42"></div>
+        </div>
+        <div id="w-node-9083b63d6f22-348d15ca" class="div-block-69">
+          <div class="div-block-64">
+            <form action="/search" class="search w-form">
+              <img src="images/magnifying-glass-2.png" width="20" alt="" class="image-11" /><input
+                type="search"
+                class="search-input-2 w-input"
+                maxlength="256"
+                name="query"
+                placeholder="Search…"
+                id="search"
+                required=""
+              /><input type="submit" value="Search" class="search-button w-button" />
+            </form>
+            <div class="div-block-81"></div>
+            <div class="div-block-80">
+              <div class="div-block-71">
+                <div class="div-block-70 pro"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="w-node-419e2ebca6ea-348d15ca" class="div-block-79">
+          <div class="div-block-67">
+            <div class="div-block-73">
+              <div class="text-block-15">ALL FILES</div>
+              <div class="div-block-41 file">
+                <div data-w-id="0c88ed01-836c-f4e4-9568-d75e28a3e869" class="div-block-95"></div>
+              </div>
+            </div>
+            <div class="columns-2 top w-row">
+              <div class="column-3 w-col w-col-3">
+                <div class="text-block-16 name">NAME</div>
+              </div>
+              <div class="column-4 w-col w-col-3">
+                <div class="text-block-16">SHARED WITH</div>
+              </div>
+              <div class="column-5 w-col w-col-2">
+                <div class="text-block-16">UPLOADED</div>
+              </div>
+              <div class="column-6 w-col w-col-2">
+                <div class="text-block-16">VALID UNTIL</div>
+              </div>
+              <div class="w-col w-col-2">
+                <div class="text-block-16">NOTES</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="w-node-f6b1c89641d7-348d15ca"></div>
+        <div id="w-node-7890232c32c1-348d15ca" class="div-block-76">
+          <div class="div-block-77">
+            <div>
+              <div class="div-block-109">
+                <h1 class="heading-3">My Documents</h1>
+              </div>
+            </div>
+            <div class="div-block-74">
+              <div class="div-block-75">
+                <div data-w-id="e92424c6-635c-b837-2ff9-1316212617b9" class="list-toggle mock-up"></div>
+                <div data-w-id="6606851e-9df1-8aeb-1978-a63393a61658" class="grid-toggle"></div>
+                <img src="images/Group-985.svg" alt="" class="image-17" />
+              </div>
+
+              <div class="div-block-106"></div>
+            </div>
+          </div>
+          <div class="line-dividr"></div>
+        </div>
+        <div id="w-node-a5e8a4d266ce-348d15ca" class="div-block-43">
+          <div class="div-block-66">
+            <div class="div-block-72">
+              <div data-w-id="4c7c33a0-07b2-0d60-d91b-7da4bd3f4839" class="div-block-110"></div>
+              <div class="text-block-12">FOLDERS</div>
+              <div class="div-block-41">
+                <div data-w-id="e2f07afb-747a-ff0b-dce6-feec787333f0" class="div-block-94"></div>
+              </div>
+            </div>
+          </div>
+          <div class="div-block-103 left">
+            <div data-w-id="e7a90184-3a11-2c4e-56a7-b50ead07a243" class="div-block-111">
+              <div data-w-id="9f995842-dfb8-0857-099a-d51ec1262fa3" class="div-block-102 unselected">
+                <div class="div-block-52">
+                  <div class="text-block-13">SHARED WITH</div>
+                  <div class="div-block-46 left">
+                    <div class="div-block-55">
+                      <div class="div-block-47"></div>
+                      <div class="div-block-47"></div>
+                      <div class="div-block-47"></div>
+                      <div class="div-block-47"></div>
+                      <div class="div-block-47"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-block-14">FOLDER</div>
+                <p class="paragraph">Folder #1</p>
+                <div data-w-id="0e8224fe-4fbc-b5fc-6662-5882824a7a3a" class="div-block-151">
+                  <img src="images/Group-1014_1.svg" width="22" data-w-id="334a5367-44b1-30d4-ef9f-95aa034eb75c" alt="" class="image-29" />
+                </div>
+              </div>
+              <div data-w-id="9f995842-dfb8-0857-099a-d51ec1262fb1" class="div-block-102 selected">
+                <div class="div-block-52">
+                  <div class="text-block-13">SHARED WITH</div>
+                  <div class="div-block-46">
+                    <div class="div-block-55">
+                      <div class="div-block-47"></div>
+                      <div class="div-block-47"></div>
+                      <div class="div-block-47"></div>
+                      <div class="div-block-47"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-block-14">FOLDER</div>
+                <p class="paragraph">Folder #1</p>
+              </div>
+              <div data-w-id="9f995842-dfb8-0857-099a-d51ec1262fbf" class="div-block-102 unselected">
+                <div class="div-block-52">
+                  <div class="text-block-13">SHARED WITH</div>
+                  <div class="div-block-46">
+                    <div class="div-block-55">
+                      <div class="div-block-47"></div>
+                      <div class="div-block-47"></div>
+                      <div class="div-block-47"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-block-14">FOLDER</div>
+                <p class="paragraph">Folder #2</p>
+              </div>
+              <div data-w-id="9f995842-dfb8-0857-099a-d51ec1262fcd" class="div-block-102 selected">
+                <div class="div-block-52">
+                  <div class="text-block-13">SHARED WITH</div>
+                  <div class="div-block-46">
+                    <div class="div-block-55">
+                      <div class="div-block-47"></div>
+                      <div class="div-block-47"></div>
+                      <div class="div-block-47"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-block-14">FOLDER</div>
+                <p class="paragraph">Folder #2</p>
+              </div>
+              <div data-w-id="9f995842-dfb8-0857-099a-d51ec1262fda" class="div-block-102 unselected">
+                <div class="div-block-52">
+                  <div class="text-block-13 unselected">SHARED WITH</div>
+                  <div class="div-block-46">
+                    <div class="div-block-55">
+                      <div class="div-block-47"></div>
+                      <div class="div-block-47"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-block-14 unselected">FOLDER</div>
+                <p class="paragraph unselected">Folder #3</p>
+              </div>
+              <div data-w-id="9f995842-dfb8-0857-099a-d51ec1262fe6" class="div-block-102 selected">
+                <div class="div-block-52">
+                  <div class="text-block-13 unselected">SHARED WITH</div>
+                  <div class="div-block-46">
+                    <div class="div-block-55">
+                      <div class="div-block-47"></div>
+                      <div class="div-block-47"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-block-14 unselected">FOLDER</div>
+                <p class="paragraph unselected">Folder #3</p>
+              </div>
+              <div class="div-block-82"><img src="images/Group-970_1Group-970.png" alt="" class="arrow _3" /></div>
+            </div>
+          </div>
+        </div>
+        <div id="w-node-3210f5d583e0-348d15ca" class="div-block-56">
+          <div class="list-view">
+            <div data-w-id="d0590fee-fdf2-e855-8ec4-204fcb683b65" class="columns-2 med w-row">
+              <div class="column-7 w-col w-col-3">
+                <div class="div-block-84">
+                  <div class="tbwrapper">
+                    <div class="list-thumbnail">
+                      <img
+                        src="images/Medicare_card_new.jpg"
+                        srcset="images/Medicare_card_new-p-800.jpeg 800w, images/Medicare_card_new.jpg 1013w"
+                        sizes="(max-width: 479px) 100vw, (max-width: 767px) 80px, (max-width: 991px) 8vw, 7vw"
+                        alt=""
+                        class="thumbnail med"
+                      />
+                    </div>
+                  </div>
+                  <div class="text-block-20">Medical Insurance Card</div>
+                </div>
+              </div>
+              <div class="column-8 w-col w-col-3">
+                <div class="list-shares">
+                  <div class="list-profile-share pro"></div>
+                  <div class="list-profile-share pro"></div>
+                  <div class="div-block-138"></div>
+                  <div class="div-block-139">
+                    <div class="text-block-30">1</div>
+                  </div>
+                </div>
+              </div>
+              <div class="column-9 w-col w-col-2">
+                <div class="uploaded-wrapper">
+                  <div class="div-block-85">
+                    <div class="list-profile-share pro"></div>
+                    <div class="text-block-22">Jan 9, 2020 - 11:01 AM</div>
+                  </div>
+                  <div class="not-upload-wrapper">
+                    <div class="text-block-22">NOT UPLOADED</div>
+                    <a data-w-id="a46c7e1b-8681-25f8-5a9b-f9b03974f941" href="#" class="button-6 not-yet w-button">Upload</a>
+                  </div>
+                </div>
+              </div>
+              <div class="w-col w-col-2">
+                <div class="text-block-22">Feb 19, 2020</div>
+              </div>
+              <div class="column-18 w-col w-col-2">
+                <div class="div-block-143">
+                  <div data-delay="0" class="w-dropdown">
+                    <div data-w-id="b40b92e6-3d61-57bf-d9f3-05113efb6267" class="dropdown-toggle-2 w-dropdown-toggle"><img src="images/Group-1014.svg" width="35" alt="" /></div>
+                    <nav class="dropdown-list w-dropdown-list">
+                      <a href="#" data-w-id="b40b92e6-3d61-57bf-d9f3-05113efb626c" class="preview w-dropdown-link">Preview</a
+                      ><a href="#" data-w-id="b40b92e6-3d61-57bf-d9f3-05113efb626e" class="share w-dropdown-link">Share</a><a href="#" class="delete w-dropdown-link">Delete</a>
+                    </nav>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div data-w-id="27fb8281-8fb6-f20b-bb16-3c7c6df49a08" class="columns-2 birth w-row">
+              <div class="column-7 w-col w-col-3">
+                <div class="div-block-84">
+                  <div class="tbwrapper">
+                    <div class="list-thumbnail">
+                      <img
+                        src="images/Birth-certificates-california-simplistic-us-birth-certificate-california-sample-gallery-of-birth-certificates-california.jpg"
+                        height="75"
+                        alt=""
+                        class="thumbnail birth"
+                      />
+                    </div>
+                  </div>
+                  <div class="text-block-20">Birth Certificate</div>
+                </div>
+              </div>
+              <div class="column-8 w-col w-col-3">
+                <div class="list-shares">
+                  <div class="list-profile-share pro"></div>
+                  <div class="list-profile-share pro"></div>
+                  <div class="list-profile-share pro"></div>
+                  <div class="div-block-138"></div>
+                  <div class="div-block-139">
+                    <div class="text-block-30">1</div>
+                  </div>
+                </div>
+              </div>
+              <div class="column-9 w-col w-col-2">
+                <div class="uploaded-wrapper">
+                  <div class="div-block-85">
+                    <div class="list-profile-share pro"></div>
+                    <div class="text-block-22">Jan 9, 2020 - 11:01 AM</div>
+                  </div>
+                  <div class="not-upload-wrapper">
+                    <div class="text-block-22">NOT UPLOADED</div>
+                    <a data-w-id="e1bff6f5-4365-85ee-abed-f35fbfebd5cf" href="#" class="button-6 not-yet w-button">Upload</a>
+                  </div>
+                </div>
+              </div>
+              <div class="w-col w-col-2">
+                <div class="text-block-22">Feb 19, 2020</div>
+              </div>
+              <div class="column-18 w-col w-col-2"></div>
+            </div>
+            <div data-w-id="5f29b9d9-c0ad-7aa6-5b73-574f11cb35ba" class="columns-2 dl w-row">
+              <div class="column-7 w-col w-col-3">
+                <div class="div-block-84">
+                  <div class="tbwrapper">
+                    <div class="list-thumbnail"><img src="images/district-columbia-drivers-license-small.jpg" alt="" class="thumbnail dl" /></div>
+                  </div>
+                  <div class="text-block-20">Driver&#x27;s License</div>
+                </div>
+              </div>
+              <div class="column-8 w-col w-col-3">
+                <div class="list-shares">
+                  <div class="list-profile-share pro"></div>
+                  <div class="div-block-138"></div>
+                  <div class="div-block-139">
+                    <div class="text-block-30">1</div>
+                  </div>
+                </div>
+              </div>
+              <div class="column-9 w-col w-col-2">
+                <div class="uploaded-wrapper">
+                  <div class="div-block-85">
+                    <div class="list-profile-share pro"></div>
+                    <div class="text-block-22">Jan 9, 2020 - 11:01 AM</div>
+                  </div>
+                  <div class="not-upload-wrapper">
+                    <div class="text-block-22">NOT UPLOADED</div>
+                    <a data-w-id="c7eeae6a-be60-133e-34fd-6b325eb15fbe" href="#" class="button-6 not-yet w-button">Upload</a>
+                  </div>
+                </div>
+              </div>
+              <div class="w-col w-col-2">
+                <div class="text-block-22">Feb 19, 2020</div>
+              </div>
+              <div class="column-18 w-col w-col-2"></div>
+            </div>
+            <div data-w-id="aed5c4c9-9a8d-fefa-ce93-63afa123f014" class="columns-2 map w-row">
+              <div class="column-7 w-col w-col-3">
+                <div class="div-block-84">
+                  <div class="tbwrapper">
+                    <div class="list-thumbnail"><img src="images/MAP-Card.jpg" alt="" class="thumbnail map" /></div>
+                  </div>
+                  <div class="text-block-20">MAP Card</div>
+                </div>
+              </div>
+              <div class="column-8 w-col w-col-3">
+                <div class="list-shares">
+                  <div class="list-profile-share pro"></div>
+                  <div class="list-profile-share pro"></div>
+                  <div class="list-profile-share pro"></div>
+                  <div class="div-block-138"></div>
+                  <div class="div-block-139">
+                    <div class="text-block-30">1</div>
+                  </div>
+                </div>
+              </div>
+              <div class="column-9 w-col w-col-2">
+                <div class="uploaded-wrapper">
+                  <div class="div-block-85">
+                    <div class="list-profile-share pro"></div>
+                    <div class="text-block-22">Jan 9, 2020 - 11:01 AM</div>
+                  </div>
+                  <div class="not-upload-wrapper">
+                    <div class="text-block-22">NOT UPLOADED</div>
+                    <a data-w-id="ce92a555-d1aa-1137-c73e-2268f81df2ad" href="#" class="button-6 not-yet w-button">Upload</a>
+                  </div>
+                </div>
+              </div>
+              <div class="w-col w-col-2">
+                <div class="text-block-22">Feb 19, 2020</div>
+              </div>
+              <div class="column-18 w-col w-col-2"></div>
+            </div>
+            <div data-w-id="1f9a532f-7c87-7d4a-f71a-7cc443631197" class="columns-2 soc w-row">
+              <div class="column-7 w-col w-col-3">
+                <div class="div-block-84">
+                  <div class="tbwrapper">
+                    <div class="list-thumbnail"><img src="images/How-to-Get-a-New-Replacement-Social-Security-Card.jpg" alt="" class="thumbnail soc" /></div>
+                  </div>
+                  <div class="text-block-20">Social Security Card</div>
+                </div>
+              </div>
+              <div class="column-8 w-col w-col-3">
+                <div class="list-shares"></div>
+              </div>
+              <div class="column-9 w-col w-col-2">
+                <div class="uploaded-wrapper">
+                  <div class="div-block-85">
+                    <div class="list-profile-share pro"></div>
+                    <div class="text-block-22">Jan 9, 2020 - 11:01 AM</div>
+                  </div>
+                  <div class="not-upload-wrapper">
+                    <div class="text-block-22">NOT UPLOADED</div>
+                    <a data-w-id="fc73699d-9790-88fd-e556-93f1ca76669c" href="#" class="button-6 not-yet w-button">Upload</a>
+                  </div>
+                </div>
+              </div>
+              <div class="w-col w-col-2">
+                <div class="text-block-22">Feb 19, 2020</div>
+              </div>
+              <div class="column-18 w-col w-col-2"></div>
+            </div>
+            <div data-w-id="14fe6f2a-145e-f9fb-32a4-1bf4bb227222" class="columns-2 pass w-row">
+              <div class="column-7 w-col w-col-3">
+                <div class="div-block-84">
+                  <div class="tbwrapper">
+                    <div class="list-thumbnail">
+                      <img
+                        src="images/d8f9002b5eed18a459cc140155d6f7ff.jpg"
+                        height="75"
+                        srcset="images/d8f9002b5eed18a459cc140155d6f7ff-p-500.jpeg 500w, images/d8f9002b5eed18a459cc140155d6f7ff-p-800.jpeg 800w, images/d8f9002b5eed18a459cc140155d6f7ff.jpg 976w"
+                        sizes="(max-width: 479px) 100vw, (max-width: 767px) 54.133522033691406px, (max-width: 991px) 7vw, 54.133522033691406px"
+                        alt=""
+                        class="thumbnail pass"
+                      />
+                    </div>
+                  </div>
+                  <div class="text-block-20">Passport</div>
+                </div>
+              </div>
+              <div class="column-8 w-col w-col-3">
+                <div class="list-shares">
+                  <div class="list-profile-share pro"></div>
+                  <div class="list-profile-share pro"></div>
+                </div>
+              </div>
+              <div class="column-9 w-col w-col-2">
+                <div class="uploaded-wrapper">
+                  <div class="div-block-85">
+                    <div class="list-profile-share pro"></div>
+                    <div class="text-block-22">Jan 9, 2020 - 11:01 AM</div>
+                  </div>
+                  <div class="not-upload-wrapper">
+                    <div class="text-block-22">NOT UPLOADED</div>
+                    <a data-w-id="721b9a75-6695-36a0-cf94-87780275cdc5" href="#" class="button-6 not-yet w-button">Upload</a>
+                  </div>
+                </div>
+              </div>
+              <div class="w-col w-col-2">
+                <div class="text-block-22">Feb 19, 2020</div>
+              </div>
+              <div class="column-18 w-col w-col-2"></div>
+            </div>
+            <div data-w-id="f3a0fcc5-f771-db2d-7a2c-0356eaa6e98a" class="columns-2 ead w-row">
+              <div class="column-7 w-col w-col-3">
+                <div class="div-block-84">
+                  <div class="tbwrapper">
+                    <div class="list-thumbnail">
+                      <img
+                        src="images/dsafg.jpg"
+                        srcset="images/dsafg-p-500.jpeg 500w, images/dsafg.jpg 605w"
+                        sizes="(max-width: 479px) 100vw, (max-width: 767px) 80px, (max-width: 991px) 10vw, 80px"
+                        alt=""
+                        class="thumbnail ead"
+                      />
+                    </div>
+                  </div>
+                  <div class="text-block-20">EAD Card</div>
+                </div>
+              </div>
+              <div class="column-8 w-col w-col-3">
+                <div class="list-shares">
+                  <div class="list-profile-share pro"></div>
+                  <div class="list-profile-share pro"></div>
+                </div>
+              </div>
+              <div class="column-9 w-col w-col-2">
+                <div class="uploaded-wrapper">
+                  <div class="div-block-85">
+                    <div class="list-profile-share pro"></div>
+                    <div class="text-block-22">Jan 9, 2020 - 11:01 AM</div>
+                  </div>
+                  <div class="not-upload-wrapper">
+                    <div class="text-block-22">NOT UPLOADED</div>
+                    <a data-w-id="a29a3a81-c9c8-398f-ca38-41fe6017be49" href="#" class="button-6 not-yet w-button">Upload</a>
+                  </div>
+                </div>
+              </div>
+              <div class="w-col w-col-2">
+                <div class="text-block-22">Feb 19, 2020</div>
+              </div>
+              <div class="column-18 w-col w-col-2"></div>
+            </div>
+            <div data-w-id="edc11916-116e-5edf-db9e-390fc7e9c2cf" class="columns-2 _2 mar w-row">
+              <div class="column-7 w-col w-col-3">
+                <div class="div-block-84">
+                  <div class="tbwrapper">
+                    <div class="list-thumbnail"><img src="images/marriage-certificate-and-court-marriage-500x500.png" alt="" class="thumbnail mar" /></div>
+                  </div>
+                  <div class="text-block-20">Marriage Certificate</div>
+                </div>
+              </div>
+              <div class="column-8 w-col w-col-3">
+                <div class="list-shares"></div>
+              </div>
+              <div class="column-9 w-col w-col-2">
+                <div class="uploaded-wrapper">
+                  <div class="div-block-85">
+                    <div class="list-profile-share pro"></div>
+                    <div class="text-block-22">Jan 9, 2020 - 11:01 AM</div>
+                  </div>
+                  <div class="not-upload-wrapper">
+                    <div class="text-block-22">NOT UPLOADED</div>
+                    <a data-w-id="465e5f01-092e-7037-49b5-303f7afd0d01" href="#" class="button-6 not-yet w-button">Upload</a>
+                  </div>
+                </div>
+              </div>
+              <div class="w-col w-col-2">
+                <div class="text-block-22">Feb 19, 2020</div>
+              </div>
+              <div class="column-18 w-col w-col-2"></div>
+            </div>
+          </div>
+          <div class="grid-view left">
+            <div class="div-block-89">
+              <div data-w-id="8371c2a4-0df2-314e-69ef-ea1559d1d8b6" class="div-block-87 med">
+                <div class="div-block-118">
+                  <div class="div-block-88">
+                    <img
+                      src="images/Medicare_card_new.jpg"
+                      width="300"
+                      srcset="images/Medicare_card_new-p-800.jpeg 800w, images/Medicare_card_new.jpg 1013w"
+                      sizes="100vw"
+                      alt=""
+                      class="thumbnail med"
+                    />
+                  </div>
+                </div>
+                <div class="grid-thumbnail-info">
+                  <div class="paragraph file">Medical Insurance Card</div>
+                  <div class="div-block-90">
+                    <div class="text-block-13 file">SHARED WITH</div>
+                  </div>
+                  <div class="div-block-120 left">
+                    <div data-w-id="8371c2a4-0df2-314e-69ef-ea1559d1d8bb" class="div-block-46 file">
+                      <div class="shared-with-profile"></div>
+                      <div class="shared-with-profile"></div>
+                      <div class="shared-with-profile"></div>
+                      <div class="shared-with-profile"></div>
+                      <div class="shared-with-profile"></div>
+                      <div class="shared-with-profile"></div>
+                      <div class="shared-with-profile"></div>
+                      <div class="shared-with-profile"></div>
+                      <div class="shared-with-profile"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div data-w-id="1ecf94db-3f42-746a-2138-f95220769632" class="div-block-87 birth">
+                <div class="div-block-118">
+                  <div class="div-block-88">
+                    <img
+                      src="images/Birth-certificates-california-simplistic-us-birth-certificate-california-sample-gallery-of-birth-certificates-california.jpg"
+                      height="200"
+                      alt=""
+                      class="thumbnail birth"
+                    />
+                  </div>
+                </div>
+                <div class="grid-thumbnail-info">
+                  <div class="paragraph file">Birth Certificate</div>
+                  <div class="div-block-90">
+                    <div class="text-block-13 file">SHARED WITH</div>
+                  </div>
+                  <div class="div-block-120">
+                    <div class="div-block-46 file">
+                      <div class="shared-with-profile"></div>
+                      <div class="shared-with-profile"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div data-w-id="7fbd7eca-8b28-b5a4-b68e-1930ba1bb48f" class="div-block-87 dl">
+                <div class="div-block-118">
+                  <div class="div-block-88"><img src="images/district-columbia-drivers-license-small.jpg" width="300" alt="" class="thumbnail dl" /></div>
+                </div>
+                <div class="grid-thumbnail-info">
+                  <div class="paragraph file">Driver&#x27;s License</div>
+                  <div class="div-block-90">
+                    <div class="text-block-13 file">SHARED WITH</div>
+                  </div>
+                  <div class="div-block-120">
+                    <div class="div-block-46 file">
+                      <div class="shared-with-profile"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div data-w-id="832c3a1c-aad9-4064-b051-0362f27bade7" class="div-block-87">
+                <div class="div-block-118">
+                  <div class="div-block-88"><img src="images/MAP-Card.jpg" width="300" alt="" class="thumbnail map" /></div>
+                </div>
+                <div class="grid-thumbnail-info">
+                  <div class="div-block-90">
+                    <div class="text-block-13 file">SHARED WITH</div>
+                  </div>
+                  <div class="paragraph file">MAP Card</div>
+                  <div class="div-block-120">
+                    <div class="div-block-46 file">
+                      <div class="shared-with-profile"></div>
+                      <div class="shared-with-profile"></div>
+                      <div class="shared-with-profile"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div data-w-id="9c3f0faa-dfc4-ff9a-4fb2-c6dbc3b950f8" class="div-block-87 soc">
+                <div class="div-block-118">
+                  <div class="div-block-88"><img src="images/How-to-Get-a-New-Replacement-Social-Security-Card.jpg" width="300" alt="" class="thumbnail soc" /></div>
+                </div>
+                <div class="grid-thumbnail-info">
+                  <div class="paragraph file">Social Security Card</div>
+                  <div class="div-block-90">
+                    <div class="text-block-13 file">SHARED WITH</div>
+                  </div>
+                  <div class="div-block-120">
+                    <div class="div-block-46 file">
+                      <div class="shared-with-profile"></div>
+                      <div class="shared-with-profile"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div data-w-id="22f8508d-601e-721a-0d2c-e084493b5388" class="div-block-87 pass">
+                <div class="div-block-118">
+                  <div class="div-block-88">
+                    <img
+                      src="images/d8f9002b5eed18a459cc140155d6f7ff.jpg"
+                      height="200"
+                      srcset="images/d8f9002b5eed18a459cc140155d6f7ff-p-500.jpeg 500w, images/d8f9002b5eed18a459cc140155d6f7ff-p-800.jpeg 800w, images/d8f9002b5eed18a459cc140155d6f7ff.jpg 976w"
+                      sizes="100vw"
+                      alt=""
+                      class="thumbnail pass"
+                    />
+                  </div>
+                </div>
+                <div class="grid-thumbnail-info">
+                  <div class="paragraph file">Passport</div>
+                  <div class="div-block-90">
+                    <div class="text-block-13 file">SHARED WITH</div>
+                  </div>
+                  <div class="div-block-120">
+                    <div class="div-block-46 file">
+                      <div class="shared-with-profile"></div>
+                      <div class="shared-with-profile"></div>
+                      <div class="shared-with-profile"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div data-w-id="4214a6b5-5967-e056-e4af-db76c9860a53" class="div-block-87 ead">
+                <div class="div-block-118">
+                  <div class="div-block-88"><img src="images/dsafg.jpg" width="300" srcset="images/dsafg-p-500.jpeg 500w, images/dsafg.jpg 605w" sizes="100vw" alt="" class="thumbnail ead" /></div>
+                </div>
+                <div class="grid-thumbnail-info">
+                  <div class="paragraph file">EAD Card</div>
+                  <div class="div-block-90">
+                    <div class="text-block-13 file">SHARED WITH</div>
+                  </div>
+                  <div class="div-block-120">
+                    <div class="div-block-46 file">
+                      <div class="shared-with-profile"></div>
+                      <div class="shared-with-profile"></div>
+                      <div class="shared-with-profile"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="div-block-120">
+                  <div class="div-block-46 file">
+                    <div class="shared-with-profile p"></div>
+                  </div>
+                </div>
+              </div>
+              <div data-w-id="a12ecac5-17cf-bd11-14ce-87c499343bc1" class="div-block-87 ead">
+                <div class="div-block-118">
+                  <div class="div-block-88"><img src="images/marriage-certificate-and-court-marriage-500x500.png" width="300" alt="" class="thumbnail mar" /></div>
+                </div>
+                <div class="grid-thumbnail-info">
+                  <div class="paragraph file">Marriage Certificate</div>
+                  <div class="div-block-90">
+                    <div class="text-block-13 file">SHARED WITH</div>
+                  </div>
+                  <div class="div-block-120">
+                    <div class="div-block-46 file">
+                      <div class="shared-with-profile"></div>
+                      <div class="shared-with-profile"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="div-block-120">
+                  <div class="div-block-46 file">
+                    <div class="shared-with-profile p"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+    <script
+      src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.4.1.min.220afd743d.js"
+      type="text/javascript"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/webflow.js" type="text/javascript"></script>
+  </body>
+</html>

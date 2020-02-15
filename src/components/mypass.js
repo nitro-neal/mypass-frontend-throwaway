@@ -82,17 +82,27 @@ class MyPass extends React.Component {
     if (this.state.uploadForAccountName !== undefined && this.state.uploadForAccountId !== undefined) {
       formData.append("uploadForAccountName", this.state.uploadForAccountName);
       formData.append("uploadForAccountId", this.state.uploadForAccountId);
+
+      let res = await fetch("http://localhost:5000/api/uploadDocumentOnBehalfOfUser/", {
+        method: "POST",
+        headers: {
+          authorization: "Token " + localStorage.getItem("jwt")
+        },
+        body: formData
+      });
+
+      console.log(res);
+    } else {
+      let res = await fetch("http://localhost:5000/api/documents/", {
+        method: "POST",
+        headers: {
+          authorization: "Token " + localStorage.getItem("jwt")
+        },
+        body: formData
+      });
+
+      console.log(res);
     }
-
-    let res = await fetch("http://localhost:5000/api/documents/", {
-      method: "POST",
-      headers: {
-        authorization: "Token " + localStorage.getItem("jwt")
-      },
-      body: formData
-    });
-
-    console.log(res);
 
     this.getDocuments();
   };
