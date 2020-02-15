@@ -12,35 +12,34 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
 
-const URL_BASE = "http://34.212.27.73:5000";
-// const URL_BASE = "http://localhost:5000";
+// const URL_BASE = "http://34.212.27.73:5000";
+const URL_BASE = "http://localhost:5000";
 
 function App() {
   return (
-    <OwnerWorkflow urlBase={URL_BASE} />
-    // <Router>
-    //   <div>
-    //     <nav>
-    //       <ul>
-    //         <li>
-    //           <Link to="/">Home</Link>
-    //         </li>
-    //         <li>
-    //           <Link to="/admin">Admin</Link>
-    //         </li>
-    //       </ul>
-    //     </nav>
+    <Router>
+      <div>
+        {/* <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/admin">Admin</Link>
+            </li>
+          </ul>
+        </nav> */}
 
-    //     <Switch>
-    //       <Route path="/admin">
-    //         <Admin />
-    //       </Route>
-    //       <Route path="/">
-    //         <OwnerWorkflow />
-    //       </Route>
-    //     </Switch>
-    //   </div>
-    // </Router>
+        <Switch>
+          <Route path="/admin">
+            <Admin />
+          </Route>
+          <Route path="/">
+            <OwnerWorkflow urlBase={URL_BASE} />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 

@@ -18,9 +18,21 @@ import {
   MDBAnimation
 } from "mdbreact";
 import axios from "axios";
+import DetailTabs from "./detailTabs";
+import moment from "moment";
 
 class OwnerWorkflow extends React.Component {
-  state = { loggedInAsOwner: false, documentTypes: [], modal: false, uploadDisabled: true, currentUploadType: "", uploadDocumentFinished: false, documentTypeToUrlMap: {} };
+  state = {
+    loggedInAsOwner: false,
+    documentTypes: [],
+    modal: false,
+    detailModal: false,
+    uploadDisabled: true,
+    currentUploadType: "",
+    currentDetailType: "",
+    uploadDocumentFinished: false,
+    documentTypeToUrlMap: {}
+  };
 
   fileSelected = () => {
     this.setState({ uploadDisabled: false });
@@ -67,15 +79,28 @@ class OwnerWorkflow extends React.Component {
   getDocuments = async () => {
     let documentsRes = await axios.get(this.props.urlBase + "/api/documents/");
     let documents = documentsRes.data.documents;
+    console.log("documents:");
+    console.log(documents);
     let documentTypeToUrlMap = {};
 
     for (var i = 0; i < documents.length; i++) {
       let documentUrl = this.props.urlBase + "/api/documents/" + documents[i].url;
+      let date = moment(documents[i].createdAt);
+      let humanReadable = date.format("MMM Do YYYY");
+      let docObject = { createdAt: humanReadable, url: documentUrl };
       let type = documents[i].type;
-      documentTypeToUrlMap[type] = documentUrl;
+      documentTypeToUrlMap[type] = docObject;
     }
 
     this.setState({ documentTypeToUrlMap: documentTypeToUrlMap });
+  };
+
+  deleteDocument = async () => {
+    const filename = this.state.documentTypeToUrlMap[this.state.currentDetailType].url;
+
+    let documentsRes = await axios.delete(filename);
+
+    this.getDocuments();
   };
 
   loginAsOwner = async () => {
@@ -111,8 +136,14 @@ class OwnerWorkflow extends React.Component {
     });
   };
 
+  toggleDetail = name => () => {
+    this.setState({ currentDetailType: name });
+    this.setState({
+      detailModal: !this.state.detailModal
+    });
+  };
+
   componentDidMount = () => {
-    console.log(this.props.urlBase);
     let jwt = localStorage.getItem("jwt");
     if (jwt !== undefined && jwt !== "undefined") {
       axios.defaults.headers.common["Authorization"] = "Bearer " + jwt;
@@ -134,10 +165,12 @@ class OwnerWorkflow extends React.Component {
                 {this.state.documentTypeToUrlMap[documentName] === undefined ? (
                   <MDBIcon style={{ width: "100px", verticalAlign: "middle", paddingRight: "30px" }} icon="file" size="4x" />
                 ) : (
-                  <img src={this.state.documentTypeToUrlMap[documentName]} style={{ width: "100px", verticalAlign: "middle", paddingRight: "30px" }} />
+                  <img onClick={this.toggleDetail(documentName)} src={this.state.documentTypeToUrlMap[documentName].url} style={{ width: "100px", verticalAlign: "middle", paddingRight: "30px" }} />
                 )}
 
-                <span>{documentName}</span>
+                <a style={{ color: "black" }} href="#">
+                  <span onClick={this.toggleDetail(documentName)}>{documentName}</span>
+                </a>
               </div>
             </MDBCol>
             <MDBCol size="2">
@@ -170,7 +203,7 @@ class OwnerWorkflow extends React.Component {
                       <div style={{ verticalAlign: "bottom", marginTop: "30px" }}>
                         <img style={{ width: "50px", display: "block", marginLeft: "auto", marginRight: "auto" }} class="circular--square" src="newimages/owner.png" />
                       </div>
-                      <p>Feb 5, 2020</p>
+                      <p>{this.state.documentTypeToUrlMap[documentName].createdAt}</p>
                     </div>
                   )}
                 </div>
@@ -233,10 +266,25 @@ class OwnerWorkflow extends React.Component {
       </MDBModal>
     );
 
+    let documentDetailModal = (
+      <MDBModal size="xl" isOpen={this.state.detailModal} toggle={this.toggleDetail("")} centered>
+        <MDBModalHeader toggle={this.toggleDetail("")}>
+          <p>
+            <MDBIcon far icon="file" /> {"   "}Document Details
+          </p>
+        </MDBModalHeader>
+        <MDBModalBody>
+          <DetailTabs deleteDocument={this.deleteDocument} imgSrc={this.state.documentTypeToUrlMap[this.state.currentDetailType]} />
+          {/* <img src={this.state.documentTypeToUrlMap[this.state.currentDetailType]} style={{ width: "200px", verticalAlign: "middle", paddingRight: "30px" }} /> */}
+        </MDBModalBody>
+      </MDBModal>
+    );
+
     if (this.state.loggedInAsOwner === true) {
       mainContent = (
         <div>
           {modal}
+          {documentDetailModal}
           <MDBRow>
             <MDBCol size="1">
               {/* Side bar */}
