@@ -46,6 +46,7 @@ class OwnerWorkflow extends React.Component {
   };
 
   uploadDocument = async () => {
+    this.setState({ uploadDocumentFinished: true });
     const file = document.getElementById("inputGroupFile01").files;
     const formData = new FormData();
     formData.append("img", file[0]);
@@ -72,7 +73,7 @@ class OwnerWorkflow extends React.Component {
       });
     }
 
-    this.setState({ uploadDocumentFinished: true });
+    // this.setState({ uploadDocumentFinished: true });
     this.getDocuments();
   };
 
@@ -151,25 +152,31 @@ class OwnerWorkflow extends React.Component {
       this.getAccountData();
     }
   };
+
   render() {
     let mainContent;
     let recordRows = [];
 
     for (let document of this.state.documentTypes) {
       let documentName = document.name;
+
+      let toggleDetailOrUpload = this.toggleDetail(documentName);
+      if (this.state.documentTypeToUrlMap[documentName] === undefined) {
+        toggleDetailOrUpload = this.toggle(documentName);
+      }
       recordRows.push(
         <div>
           <MDBRow>
             <MDBCol size="4">
               <div style={{ verticalAlign: "bottom", marginTop: "40px" }}>
                 {this.state.documentTypeToUrlMap[documentName] === undefined ? (
-                  <MDBIcon style={{ width: "100px", verticalAlign: "middle", paddingRight: "30px" }} icon="file" size="4x" />
+                  <MDBIcon onClick={toggleDetailOrUpload} style={{ width: "100px", verticalAlign: "middle", paddingRight: "30px" }} icon="file" size="4x" />
                 ) : (
-                  <img onClick={this.toggleDetail(documentName)} src={this.state.documentTypeToUrlMap[documentName].url} style={{ width: "100px", verticalAlign: "middle", paddingRight: "30px" }} />
+                  <img onClick={toggleDetailOrUpload} src={this.state.documentTypeToUrlMap[documentName].url} style={{ width: "100px", verticalAlign: "middle", paddingRight: "30px" }} />
                 )}
 
                 <a style={{ color: "black" }} href="#">
-                  <span onClick={this.toggleDetail(documentName)}>{documentName}</span>
+                  <span onClick={toggleDetailOrUpload}>{documentName}</span>
                 </a>
               </div>
             </MDBCol>
