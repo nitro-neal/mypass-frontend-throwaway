@@ -11,6 +11,8 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
+import CaseWorkerWorkflow from "./components/caseworkerWorkflow";
+import ChooseWorkflow from "./components/chooseWorkflow";
 
 // const URL_BASE = "http://34.212.27.73:5000";
 const URL_BASE = "http://localhost:5000";
@@ -19,24 +21,17 @@ function App() {
   return (
     <Router>
       <div>
-        {/* <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/admin">Admin</Link>
-            </li>
-          </ul>
-        </nav> */}
-
         <Switch>
           <Route path="/admin">
             <Admin />
           </Route>
-          <Route path="/">
+          <Route path="/owner">
             <OwnerWorkflow urlBase={URL_BASE} />
           </Route>
+          <Route path="/caseworker">
+            <CaseWorkerWorkflow urlBase={URL_BASE} />
+          </Route>
+          <Route path="/" render={routeProps => <ChooseWorkflow {...routeProps} />} />
         </Switch>
       </div>
     </Router>

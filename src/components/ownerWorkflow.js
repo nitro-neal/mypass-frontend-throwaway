@@ -23,7 +23,6 @@ import moment from "moment";
 
 class OwnerWorkflow extends React.Component {
   state = {
-    loggedInAsOwner: false,
     documentTypes: [],
     modal: false,
     detailModal: false,
@@ -59,7 +58,7 @@ class OwnerWorkflow extends React.Component {
       let res = await fetch(this.props.urlBase + "/api/uploadDocumentOnBehalfOfUser/", {
         method: "POST",
         headers: {
-          authorization: "Token " + localStorage.getItem("jwt")
+          authorization: "Token " + localStorage.getItem("jwt-owner")
         },
         body: formData
       });
@@ -67,7 +66,7 @@ class OwnerWorkflow extends React.Component {
       let res = await fetch(this.props.urlBase + "/api/documents/", {
         method: "POST",
         headers: {
-          authorization: "Token " + localStorage.getItem("jwt")
+          authorization: "Token " + localStorage.getItem("jwt-owner")
         },
         body: formData
       });
@@ -118,14 +117,15 @@ class OwnerWorkflow extends React.Component {
     let account = loginRes.data.account;
 
     axios.defaults.headers.common["Authorization"] = "Bearer " + account.token;
-    localStorage.setItem("jwt", account.token);
+    localStorage.setItem("jwt-owner", account.token);
 
     this.getAccountData();
   };
 
   logout = async () => {
-    localStorage.setItem("jwt", undefined);
-    window.location.reload(false);
+    localStorage.setItem("jwt-owner", undefined);
+    // window.location.reload(false);
+    document.location.href = "/";
   };
 
   toggle = name => () => {
@@ -145,12 +145,13 @@ class OwnerWorkflow extends React.Component {
   };
 
   componentDidMount = () => {
-    let jwt = localStorage.getItem("jwt");
-    if (jwt !== undefined && jwt !== "undefined") {
-      axios.defaults.headers.common["Authorization"] = "Bearer " + jwt;
-      this.setState({ loggedInAsOwner: true });
-      this.getAccountData();
-    }
+    this.loginAsOwner();
+    // let jwt = localStorage.getItem("jwt");
+    // if (jwt !== undefined && jwt !== "undefined") {
+    //   axios.defaults.headers.common["Authorization"] = "Bearer " + jwt;
+    //   this.setState({ loggedInAsOwner: true });
+    //   this.getAccountData();
+    // }
   };
 
   render() {
@@ -287,83 +288,66 @@ class OwnerWorkflow extends React.Component {
       </MDBModal>
     );
 
-    if (this.state.loggedInAsOwner === true) {
-      mainContent = (
-        <div>
-          {modal}
-          {documentDetailModal}
-          <MDBRow>
-            <MDBCol size="1">
-              {/* Side bar */}
-              <div class="div-block-68" style={{ width: "100px", height: "1317px" }}>
-                <div>
-                  <div class="div-block-36">
-                    <div data-w-id="ddbc8949-2fc3-f476-97de-60228bd6fa89" class="div-block-91" style={{ width: "90px", height: "80px" }}></div>
-                  </div>
-                </div>
-                <div data-w-id="fd40dfd9-11f3-d26b-9e05-bf6a430b3346" class="div-block-92">
-                  <div class="div-block-38">
-                    <div class="div-block-37"></div>
-                  </div>
-                </div>
-              </div>
-            </MDBCol>
-            <MDBCol size="9">
-              <div style={{ paddingTop: "110px" }}>
-                <div class="div-block-109">
-                  <h1 style={{ fontWeight: "bold" }} class="heading-3">
-                    My Documents
-                  </h1>
-                </div>
-              </div>
-              <hr></hr>
-              <MDBRow>
-                <MDBCol size="4">
-                  <div class="text-block-16 name">NAME</div>
-                </MDBCol>
-                <MDBCol size="2">
-                  <div class="text-block-16">SHARED WITH</div>
-                </MDBCol>
-                <MDBCol size="2">
-                  <div class="text-block-16">UPLOADED</div>
-                </MDBCol>
-                <MDBCol size="2">
-                  <div class="text-block-16">VALID UNTIL</div>
-                </MDBCol>
-                <MDBCol size="2">
-                  <div class="text-block-16">NOTARIZED</div>
-                </MDBCol>
-              </MDBRow>
-              {recordRows}
-            </MDBCol>
-            <MDBCol size="2">
-              <img style={{ marginTop: "47px", width: "50px" }} class="circular--square" src="newimages/owner.png" />
-              <p style={{ paddingLeft: "3px" }}>
-                <button onClick={this.logout} className="button-link">
-                  logout
-                </button>
-              </p>
-            </MDBCol>
-          </MDBRow>
-        </div>
-      );
-    } else {
-      mainContent = (
+    mainContent = (
+      <div>
+        {modal}
+        {documentDetailModal}
         <MDBRow>
-          <MDBCol></MDBCol>
-          <MDBCol>
-            <img style={{ marginTop: "300px", width: "350px", display: "block", marginLeft: "auto", marginRight: "auto" }} src="./newimages/mypass-logo.png"></img>
-            <div style={{ marginTop: "100px" }}>
-              <img style={{ width: "50px", display: "block", marginLeft: "auto", marginRight: "auto" }} class="circular--square" src="newimages/owner.png" />
-              <MDBBtn onClick={this.loginAsOwner} style={{ display: "block", marginLeft: "auto", marginRight: "auto" }} color="primary">
-                Login As Owner
-              </MDBBtn>
+          <MDBCol size="1">
+            {/* Side bar */}
+            <div class="div-block-68" style={{ width: "100px", height: "1317px" }}>
+              <div>
+                <div class="div-block-36">
+                  <div data-w-id="ddbc8949-2fc3-f476-97de-60228bd6fa89" class="div-block-91" style={{ width: "90px", height: "80px" }}></div>
+                </div>
+              </div>
+              <div data-w-id="fd40dfd9-11f3-d26b-9e05-bf6a430b3346" class="div-block-92">
+                <div class="div-block-38">
+                  <div class="div-block-37"></div>
+                </div>
+              </div>
             </div>
           </MDBCol>
-          <MDBCol></MDBCol>
+          <MDBCol size="9">
+            <div style={{ paddingTop: "110px" }}>
+              <div class="div-block-109">
+                <h1 style={{ fontWeight: "bold" }} class="heading-3">
+                  My Documents
+                </h1>
+              </div>
+            </div>
+            <hr></hr>
+            <MDBRow>
+              <MDBCol size="4">
+                <div class="text-block-16 name">NAME</div>
+              </MDBCol>
+              <MDBCol size="2">
+                <div class="text-block-16">SHARED WITH</div>
+              </MDBCol>
+              <MDBCol size="2">
+                <div class="text-block-16">UPLOADED</div>
+              </MDBCol>
+              <MDBCol size="2">
+                <div class="text-block-16">VALID UNTIL</div>
+              </MDBCol>
+              <MDBCol size="2">
+                <div class="text-block-16">NOTARIZED</div>
+              </MDBCol>
+            </MDBRow>
+            {recordRows}
+          </MDBCol>
+          <MDBCol size="2">
+            <img style={{ marginTop: "47px", width: "50px" }} class="circular--square" src="newimages/owner.png" />
+            <p style={{ paddingLeft: "3px" }}>
+              <button onClick={this.logout} className="button-link">
+                logout
+              </button>
+            </p>
+          </MDBCol>
         </MDBRow>
-      );
-    }
+      </div>
+    );
+
     return <div>{mainContent}</div>;
   }
 }
