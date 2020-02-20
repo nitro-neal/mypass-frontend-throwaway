@@ -23,6 +23,7 @@ import moment from "moment";
 
 class OwnerWorkflow extends React.Component {
   state = {
+    ownerAccount: {},
     documentTypes: [],
     modal: false,
     detailModal: false,
@@ -30,7 +31,8 @@ class OwnerWorkflow extends React.Component {
     currentUploadType: "",
     currentDetailType: "",
     uploadDocumentFinished: false,
-    documentTypeToUrlMap: {}
+    documentTypeToUrlMap: {},
+    shareRequests: []
   };
 
   fileSelected = () => {
@@ -41,6 +43,16 @@ class OwnerWorkflow extends React.Component {
     let res = await axios.get(this.props.urlBase + "/api/documenttypes/");
     console.log(res);
     this.setState({ documentTypes: res.data.documentTypes });
+
+    let sqRes = await axios.get(
+      this.props.urlBase +
+        "/api/account/" +
+        this.state.ownerAccount.id +
+        "/sharerequests"
+    );
+
+    this.setState({ shareRequests: sqRes.data });
+
     this.getDocuments();
   };
 
@@ -51,17 +63,23 @@ class OwnerWorkflow extends React.Component {
     formData.append("img", file[0]);
     formData.append("type", this.state.currentUploadType);
 
-    if (this.state.uploadForAccountName !== undefined && this.state.uploadForAccountId !== undefined) {
+    if (
+      this.state.uploadForAccountName !== undefined &&
+      this.state.uploadForAccountId !== undefined
+    ) {
       formData.append("uploadForAccountName", this.state.uploadForAccountName);
       formData.append("uploadForAccountId", this.state.uploadForAccountId);
 
-      let res = await fetch(this.props.urlBase + "/api/uploadDocumentOnBehalfOfUser/", {
-        method: "POST",
-        headers: {
-          authorization: "Token " + localStorage.getItem("jwt-owner")
-        },
-        body: formData
-      });
+      let res = await fetch(
+        this.props.urlBase + "/api/uploadDocumentOnBehalfOfUser/",
+        {
+          method: "POST",
+          headers: {
+            authorization: "Token " + localStorage.getItem("jwt-owner")
+          },
+          body: formData
+        }
+      );
     } else {
       let res = await fetch(this.props.urlBase + "/api/documents/", {
         method: "POST",
@@ -84,7 +102,8 @@ class OwnerWorkflow extends React.Component {
     let documentTypeToUrlMap = {};
 
     for (var i = 0; i < documents.length; i++) {
-      let documentUrl = this.props.urlBase + "/api/documents/" + documents[i].url;
+      let documentUrl =
+        this.props.urlBase + "/api/documents/" + documents[i].url;
       let date = moment(documents[i].createdAt);
       let humanReadable = date.format("MMM Do YYYY");
       let docObject = { createdAt: humanReadable, url: documentUrl };
@@ -96,7 +115,9 @@ class OwnerWorkflow extends React.Component {
   };
 
   deleteDocument = async () => {
-    const filename = this.state.documentTypeToUrlMap[this.state.currentDetailType].url;
+    const filename = this.state.documentTypeToUrlMap[
+      this.state.currentDetailType
+    ].url;
 
     let documentsRes = await axios.delete(filename);
 
@@ -112,12 +133,17 @@ class OwnerWorkflow extends React.Component {
       }
     };
 
-    let loginRes = await axios.post(this.props.urlBase + "/api/accounts/login", body);
+    let loginRes = await axios.post(
+      this.props.urlBase + "/api/accounts/login",
+      body
+    );
 
     let account = loginRes.data.account;
 
     axios.defaults.headers.common["Authorization"] = "Bearer " + account.token;
     localStorage.setItem("jwt-owner", account.token);
+    console.log(account);
+    this.setState({ ownerAccount: account });
 
     this.getAccountData();
   };
@@ -144,6 +170,19 @@ class OwnerWorkflow extends React.Component {
     });
   };
 
+  approveShareRequest = shareRequest => async () => {
+    console.log("sq");
+    console.log(shareRequest);
+    let body = {
+      shareRequestId: shareRequest._id
+    };
+
+    let sqRes = await axios.post(
+      this.props.urlBase + "/api/approveShareRequest",
+      body
+    );
+  };
+
   componentDidMount = () => {
     this.loginAsOwner();
     // let jwt = localStorage.getItem("jwt");
@@ -160,20 +199,75 @@ class OwnerWorkflow extends React.Component {
 
     for (let document of this.state.documentTypes) {
       let documentName = document.name;
-
       let toggleDetailOrUpload = this.toggleDetail(documentName);
       if (this.state.documentTypeToUrlMap[documentName] === undefined) {
         toggleDetailOrUpload = this.toggle(documentName);
       }
+
+      let sharedWith = (
+        <div class="text-center" style={{ verticalAlign: "bottom" }}>
+          <p
+            style={{
+              color: "#d3d3d3",
+              marginLeft: "auto",
+              marginRight: "auto"
+            }}
+          >
+            -
+          </p>
+        </div>
+      );
+
+      for (let shareRequest of this.state.shareRequests) {
+        if (
+          shareRequest.documentType === document.name &&
+          shareRequest.approved === false
+        ) {
+          sharedWith = (
+            <div style={{ verticalAlign: "bottom", marginTop: "30px" }}>
+              <a onClick={toggleDetailOrUpload} href="#">
+                <MDBIcon
+                  style={{
+                    width: "50px",
+                    display: "block",
+                    marginLeft: "auto",
+                    marginRight: "auto"
+                  }}
+                  size="3x"
+                  icon="exclamation-circle"
+                />
+              </a>
+            </div>
+          );
+        }
+      }
+
       recordRows.push(
         <div>
           <MDBRow>
             <MDBCol size="4">
               <div style={{ verticalAlign: "bottom", marginTop: "40px" }}>
                 {this.state.documentTypeToUrlMap[documentName] === undefined ? (
-                  <MDBIcon onClick={toggleDetailOrUpload} style={{ width: "100px", verticalAlign: "middle", paddingRight: "30px" }} icon="file" size="4x" />
+                  <MDBIcon
+                    onClick={toggleDetailOrUpload}
+                    style={{
+                      width: "100px",
+                      verticalAlign: "middle",
+                      paddingRight: "30px"
+                    }}
+                    icon="file"
+                    size="4x"
+                  />
                 ) : (
-                  <img onClick={toggleDetailOrUpload} src={this.state.documentTypeToUrlMap[documentName].url} style={{ width: "100px", verticalAlign: "middle", paddingRight: "30px" }} />
+                  <img
+                    onClick={toggleDetailOrUpload}
+                    src={this.state.documentTypeToUrlMap[documentName].url}
+                    style={{
+                      width: "100px",
+                      verticalAlign: "middle",
+                      paddingRight: "30px"
+                    }}
+                  />
                 )}
 
                 <a style={{ color: "black" }} href="#">
@@ -181,15 +275,7 @@ class OwnerWorkflow extends React.Component {
                 </a>
               </div>
             </MDBCol>
-            <MDBCol size="2">
-              {/* <div style={{ verticalAlign: "bottom", marginTop: "30px" }}>
-                <img style={{ width: "50px", display: "block", marginLeft: "auto", marginRight: "auto" }} class="circular--square" src="newimages/owner.png" />
-              </div> */}
-
-              <div class="text-center" style={{ verticalAlign: "bottom", marginTop: "50px" }}>
-                <p style={{ marginLeft: "auto", marginRight: "auto" }}>-</p>
-              </div>
-            </MDBCol>
+            <MDBCol size="2">{sharedWith}</MDBCol>
             <MDBCol size="2">
               {/* <div style={{ marginTop: "20px" }}>
                 <img style={{ width: "50px", display: "block", marginLeft: "auto", marginRight: "auto" }} class="circular--square" src="newimages/owner.png" />
@@ -197,21 +283,47 @@ class OwnerWorkflow extends React.Component {
               <div class="text-block-22">Jan 9, 2020</div> */}
 
               <div style={{ marginTop: "40px" }}>
-                <div style={{ textAlign: "center", marginLeft: "auto", marginRight: "auto" }}>
+                <div
+                  style={{
+                    textAlign: "center",
+                    marginLeft: "auto",
+                    marginRight: "auto"
+                  }}
+                >
                   {/* <div class="text-center" style={{ verticalAlign: "bottom" }}>
                     <p style={{ color: "#d3d3d3", marginLeft: "auto", marginRight: "auto" }}>Not Uploaded</p>
                   </div> */}
 
-                  {this.state.documentTypeToUrlMap[documentName] === undefined ? (
-                    <MDBBtn onClick={this.toggle(documentName)} color="mdb-color">
+                  {this.state.documentTypeToUrlMap[documentName] ===
+                  undefined ? (
+                    <MDBBtn
+                      onClick={this.toggle(documentName)}
+                      color="mdb-color"
+                    >
                       Upload
                     </MDBBtn>
                   ) : (
                     <div>
-                      <div style={{ verticalAlign: "bottom", marginTop: "30px" }}>
-                        <img style={{ width: "50px", display: "block", marginLeft: "auto", marginRight: "auto" }} class="circular--square" src="newimages/owner.png" />
+                      <div
+                        style={{ verticalAlign: "bottom", marginTop: "30px" }}
+                      >
+                        <img
+                          style={{
+                            width: "50px",
+                            display: "block",
+                            marginLeft: "auto",
+                            marginRight: "auto"
+                          }}
+                          class="circular--square"
+                          src="newimages/owner.png"
+                        />
                       </div>
-                      <p>{this.state.documentTypeToUrlMap[documentName].createdAt}</p>
+                      <p>
+                        {
+                          this.state.documentTypeToUrlMap[documentName]
+                            .createdAt
+                        }
+                      </p>
                     </div>
                   )}
                 </div>
@@ -221,7 +333,10 @@ class OwnerWorkflow extends React.Component {
               {/* <div style={{ marginTop: "40px" }}>
                 <div class="text-block-22">June 4, 2023</div>
               </div> */}
-              <div class="text-center" style={{ verticalAlign: "bottom", marginTop: "50px" }}>
+              <div
+                class="text-center"
+                style={{ verticalAlign: "bottom", marginTop: "50px" }}
+              >
                 <p style={{ marginLeft: "auto", marginRight: "auto" }}>-</p>
               </div>
             </MDBCol>
@@ -230,7 +345,10 @@ class OwnerWorkflow extends React.Component {
                 <MDBIcon style={{ width: "50px", display: "block", marginLeft: "auto", marginRight: "auto" }} icon="check-circle" />
               </div> */}
 
-              <div class="text-center" style={{ verticalAlign: "bottom", marginTop: "50px" }}>
+              <div
+                class="text-center"
+                style={{ verticalAlign: "bottom", marginTop: "50px" }}
+              >
                 <p style={{ marginLeft: "auto", marginRight: "auto" }}>-</p>
               </div>
             </MDBCol>
@@ -242,7 +360,12 @@ class OwnerWorkflow extends React.Component {
     }
 
     let modal = (
-      <MDBModal size="large" isOpen={this.state.modal} toggle={this.toggle("")} centered>
+      <MDBModal
+        size="large"
+        isOpen={this.state.modal}
+        toggle={this.toggle("")}
+        centered
+      >
         <MDBModalHeader toggle={this.toggle("")}>
           <p>
             <MDBIcon far icon="file" /> {"   "}Document Upload
@@ -251,13 +374,21 @@ class OwnerWorkflow extends React.Component {
 
         {this.state.uploadDocumentFinished === true ? (
           <MDBAnimation type="flipInX">
-            <h1 style={{ marginLeft: "auto", marginRight: "auto" }}>Upload Finished</h1>
+            <h1 style={{ marginLeft: "auto", marginRight: "auto" }}>
+              Upload Finished
+            </h1>
           </MDBAnimation>
         ) : (
           <div>
             <MDBModalBody>
               <div className="custom-file">
-                <input onClick={this.fileSelected} type="file" className="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" />
+                <input
+                  onClick={this.fileSelected}
+                  type="file"
+                  className="custom-file-input"
+                  id="inputGroupFile01"
+                  aria-describedby="inputGroupFileAddon01"
+                />
 
                 <label className="custom-file-label" htmlFor="inputGroupFile01">
                   Choose file
@@ -265,7 +396,16 @@ class OwnerWorkflow extends React.Component {
               </div>
             </MDBModalBody>
             <MDBModalFooter>
-              <MDBBtn disabled={this.state.uploadDisabled} onClick={this.uploadDocument} style={{ display: "block", marginLeft: "auto", marginRight: "auto" }} color="primary">
+              <MDBBtn
+                disabled={this.state.uploadDisabled}
+                onClick={this.uploadDocument}
+                style={{
+                  display: "block",
+                  marginLeft: "auto",
+                  marginRight: "auto"
+                }}
+                color="primary"
+              >
                 Save
               </MDBBtn>
             </MDBModalFooter>
@@ -275,14 +415,27 @@ class OwnerWorkflow extends React.Component {
     );
 
     let documentDetailModal = (
-      <MDBModal size="xl" isOpen={this.state.detailModal} toggle={this.toggleDetail("")} centered>
+      <MDBModal
+        size="xl"
+        isOpen={this.state.detailModal}
+        toggle={this.toggleDetail("")}
+        centered
+      >
         <MDBModalHeader toggle={this.toggleDetail("")}>
           <p>
             <MDBIcon far icon="file" /> {"   "}Document Details
           </p>
         </MDBModalHeader>
         <MDBModalBody>
-          <DetailTabs deleteDocument={this.deleteDocument} imgSrc={this.state.documentTypeToUrlMap[this.state.currentDetailType]} />
+          <DetailTabs
+            approveShareRequest={this.approveShareRequest}
+            deleteDocument={this.deleteDocument}
+            imgSrc={
+              this.state.documentTypeToUrlMap[this.state.currentDetailType]
+            }
+            ownerAccount={this.state.ownerAccount}
+            shareRequests={this.state.shareRequests}
+          />
           {/* <img src={this.state.documentTypeToUrlMap[this.state.currentDetailType]} style={{ width: "200px", verticalAlign: "middle", paddingRight: "30px" }} /> */}
         </MDBModalBody>
       </MDBModal>
@@ -295,13 +448,23 @@ class OwnerWorkflow extends React.Component {
         <MDBRow>
           <MDBCol size="1">
             {/* Side bar */}
-            <div class="div-block-68" style={{ width: "100px", height: "1317px" }}>
+            <div
+              class="div-block-68"
+              style={{ width: "100px", height: "1317px" }}
+            >
               <div>
                 <div class="div-block-36">
-                  <div data-w-id="ddbc8949-2fc3-f476-97de-60228bd6fa89" class="div-block-91" style={{ width: "90px", height: "80px" }}></div>
+                  <div
+                    data-w-id="ddbc8949-2fc3-f476-97de-60228bd6fa89"
+                    class="div-block-91"
+                    style={{ width: "90px", height: "80px" }}
+                  ></div>
                 </div>
               </div>
-              <div data-w-id="fd40dfd9-11f3-d26b-9e05-bf6a430b3346" class="div-block-92">
+              <div
+                data-w-id="fd40dfd9-11f3-d26b-9e05-bf6a430b3346"
+                class="div-block-92"
+              >
                 <div class="div-block-38">
                   <div class="div-block-37"></div>
                 </div>
@@ -337,7 +500,11 @@ class OwnerWorkflow extends React.Component {
             {recordRows}
           </MDBCol>
           <MDBCol size="2">
-            <img style={{ marginTop: "47px", width: "50px" }} class="circular--square" src="newimages/owner.png" />
+            <img
+              style={{ marginTop: "47px", width: "50px" }}
+              class="circular--square"
+              src="newimages/owner.png"
+            />
             <p style={{ paddingLeft: "3px" }}>
               <button onClick={this.logout} className="button-link">
                 logout

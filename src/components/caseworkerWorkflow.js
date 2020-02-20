@@ -24,12 +24,14 @@ import SearchBar from "./searchbar";
 
 class CaseWorkerWorkflow extends React.Component {
   state = {
+    caseWorkerAccount: {},
     loggedInAsCaseWorker: true,
     ownerAccountsForSearch: [],
     ownerAccounts: [],
     selectedAccout: {},
     uploadModal: false,
-    availableDocumentTypes: []
+    availableDocumentTypes: [],
+    shareRequests: []
   };
 
   toggleUploadModal = () => {
@@ -38,8 +40,18 @@ class CaseWorkerWorkflow extends React.Component {
     });
   };
 
-  requestDocument = name => () => {
-    console.log(name);
+  requestDocument = name => async () => {
+    console.log("request doc");
+    let body = {
+      documentRequest: {
+        accountId: this.state.selectedAccout._id,
+        documentType: name
+      }
+    };
+
+    let res = await axios.post(this.props.urlBase + "/api/shareRequest/", body);
+
+    console.log(res);
   };
 
   fileSelected = () => {
@@ -57,7 +69,12 @@ class CaseWorkerWorkflow extends React.Component {
         if (account.username === "sallyowner") {
           imgSrc = "newimages/owner.png";
         }
-        let ownerAccount = { first: account.username, last: account.role, imgSrc: imgSrc, id: account._id };
+        let ownerAccount = {
+          first: account.username,
+          last: account.role,
+          imgSrc: imgSrc,
+          id: account._id
+        };
         ownerAccountsForSearch.push(ownerAccount);
       }
     }
@@ -77,12 +94,22 @@ class CaseWorkerWorkflow extends React.Component {
     console.log("from dropdown");
     console.log(owner);
 
-    const found = this.state.ownerAccounts.find(element => element._id === owner.id);
+    const found = this.state.ownerAccounts.find(
+      element => element._id === owner.id
+    );
     console.log(found);
     this.setState({ selectedAccout: found });
 
     const documentTypes = [];
-    let res = await axios.get("http://localhost:5000/api/account/" + found._id + "/documenttypes");
+    let res = await axios.get(
+      this.props.urlBase + "/api/account/" + found._id + "/documenttypes"
+    );
+
+    let sqRes = await axios.get(
+      this.props.urlBase + "/api/account/" + found._id + "/sharerequests"
+    );
+
+    this.setState({ shareRequests: sqRes.data });
 
     console.log(res.data);
     this.setState({ availableDocumentTypes: res.data });
@@ -95,17 +122,23 @@ class CaseWorkerWorkflow extends React.Component {
     formData.append("img", file[0]);
     formData.append("type", this.state.currentUploadType);
 
-    if (this.state.uploadForAccountName !== undefined && this.state.uploadForAccountId !== undefined) {
+    if (
+      this.state.uploadForAccountName !== undefined &&
+      this.state.uploadForAccountId !== undefined
+    ) {
       formData.append("uploadForAccountName", this.state.uploadForAccountName);
       formData.append("uploadForAccountId", this.state.uploadForAccountId);
 
-      let res = await fetch(this.props.urlBase + "/api/uploadDocumentOnBehalfOfUser/", {
-        method: "POST",
-        headers: {
-          authorization: "Token " + localStorage.getItem("jwt-caseworker")
-        },
-        body: formData
-      });
+      let res = await fetch(
+        this.props.urlBase + "/api/uploadDocumentOnBehalfOfUser/",
+        {
+          method: "POST",
+          headers: {
+            authorization: "Token " + localStorage.getItem("jwt-caseworker")
+          },
+          body: formData
+        }
+      );
     } else {
       let res = await fetch(this.props.urlBase + "/api/documents/", {
         method: "POST",
@@ -128,7 +161,8 @@ class CaseWorkerWorkflow extends React.Component {
     let documentTypeToUrlMap = {};
 
     for (var i = 0; i < documents.length; i++) {
-      let documentUrl = this.props.urlBase + "/api/documents/" + documents[i].url;
+      let documentUrl =
+        this.props.urlBase + "/api/documents/" + documents[i].url;
       let date = moment(documents[i].createdAt);
       let humanReadable = date.format("MMM Do YYYY");
       let docObject = { createdAt: humanReadable, url: documentUrl };
@@ -148,13 +182,17 @@ class CaseWorkerWorkflow extends React.Component {
       }
     };
 
-    let loginRes = await axios.post(this.props.urlBase + "/api/accounts/login", body);
+    let loginRes = await axios.post(
+      this.props.urlBase + "/api/accounts/login",
+      body
+    );
 
     let account = loginRes.data.account;
 
     axios.defaults.headers.common["Authorization"] = "Bearer " + account.token;
     localStorage.setItem("jwt-caseworker", account.token);
 
+    this.setState({ caseWorkerAccount: account });
     // this.getAccountData();
     await this.getAllAccounts();
   };
@@ -175,17 +213,44 @@ class CaseWorkerWorkflow extends React.Component {
     let ownerAvailableDocumentTypes = [];
 
     for (let documentType of this.state.availableDocumentTypes) {
+      let requestButton = (
+        <MDBBtn onClick={this.requestDocument(documentType)} color="mdb-color">
+          Request
+        </MDBBtn>
+      );
+
+      for (let shareRequest of this.state.shareRequests) {
+        if (
+          shareRequest.documentType === documentType &&
+          shareRequest.shareWithAccountId === this.state.caseWorkerAccount.id &&
+          shareRequest.approved === false
+        ) {
+          requestButton = (
+            <MDBBtn
+              disabled
+              onClick={this.requestDocument(documentType)}
+              color="mdb-color"
+            >
+              Requested
+            </MDBBtn>
+          );
+        } else if (
+          shareRequest.documentType === documentType &&
+          shareRequest.shareWithAccountId === this.state.caseWorkerAccount.id &&
+          shareRequest.approved === true
+        ) {
+          requestButton = <MDBIcon icon="check" />;
+        }
+      }
+
+      // if(shareRequest.approved === false)
       ownerAvailableDocumentTypes.push(
         <div>
           <MDBRow>
             <MDBCol>
               <h5>{documentType}</h5>
             </MDBCol>
-            <MDBCol>
-              <MDBBtn onClick={this.requestDocument(documentType)} color="mdb-color">
-                Request
-              </MDBBtn>
-            </MDBCol>
+            <MDBCol>{requestButton}</MDBCol>
             <hr></hr>
           </MDBRow>
         </div>
@@ -194,9 +259,21 @@ class CaseWorkerWorkflow extends React.Component {
     let ownerImage;
 
     if (this.state.selectedAccout.username === "sallyowner") {
-      ownerImage = <img style={{ margin: "47px", width: "450px" }} class="circular--square" src="newimages/owner.png" />;
+      ownerImage = (
+        <img
+          style={{ margin: "47px", width: "450px" }}
+          class="circular--square"
+          src="newimages/owner.png"
+        />
+      );
     } else {
-      ownerImage = <img style={{ margin: "47px", width: "450px" }} class="circular--square" src="newimages/anon-user.png" />;
+      ownerImage = (
+        <img
+          style={{ margin: "47px", width: "450px" }}
+          class="circular--square"
+          src="newimages/anon-user.png"
+        />
+      );
     }
 
     if (this.state.selectedAccout.username !== undefined) {
@@ -204,7 +281,9 @@ class CaseWorkerWorkflow extends React.Component {
         <div style={{ textAlign: "center", marginTop: "100px" }}>
           <h2>{this.state.selectedAccout.username}</h2>
           {ownerImage}
-          <h5>Upload a document for owner: {this.state.selectedAccout.username}</h5>
+          <h5>
+            Upload a document for owner: {this.state.selectedAccout.username}
+          </h5>
           <MDBBtn onClick={this.toggleUploadModal} color="mdb-color">
             Upload
           </MDBBtn>
@@ -225,13 +304,23 @@ class CaseWorkerWorkflow extends React.Component {
         <MDBRow>
           <MDBCol size="1">
             {/* Side bar */}
-            <div class="div-block-68" style={{ width: "100px", height: "1317px" }}>
+            <div
+              class="div-block-68"
+              style={{ width: "100px", height: "1317px" }}
+            >
               <div>
                 <div class="div-block-36">
-                  <div data-w-id="ddbc8949-2fc3-f476-97de-60228bd6fa89" class="div-block-91" style={{ width: "90px", height: "80px" }}></div>
+                  <div
+                    data-w-id="ddbc8949-2fc3-f476-97de-60228bd6fa89"
+                    class="div-block-91"
+                    style={{ width: "90px", height: "80px" }}
+                  ></div>
                 </div>
               </div>
-              <div data-w-id="fd40dfd9-11f3-d26b-9e05-bf6a430b3346" class="div-block-92">
+              <div
+                data-w-id="fd40dfd9-11f3-d26b-9e05-bf6a430b3346"
+                class="div-block-92"
+              >
                 <div class="div-block-38">
                   <div class="div-block-37"></div>
                 </div>
@@ -251,7 +340,10 @@ class CaseWorkerWorkflow extends React.Component {
             <MDBRow>
               <MDBCol>
                 <div style={{ textAlign: "center" }}>
-                  <SearchBar ownerSelectedFromDropdown={this.ownerSelectedFromDropdown} ownerAccountsForSearch={this.state.ownerAccountsForSearch} />
+                  <SearchBar
+                    ownerSelectedFromDropdown={this.ownerSelectedFromDropdown}
+                    ownerAccountsForSearch={this.state.ownerAccountsForSearch}
+                  />
                 </div>
               </MDBCol>
             </MDBRow>
@@ -262,7 +354,11 @@ class CaseWorkerWorkflow extends React.Component {
             </MDBRow>
           </MDBCol>
           <MDBCol size="2">
-            <img style={{ marginTop: "47px", width: "50px" }} class="circular--square" src="newimages/caseworker.png" />
+            <img
+              style={{ marginTop: "47px", width: "50px" }}
+              class="circular--square"
+              src="newimages/caseworker.png"
+            />
             <p style={{ paddingLeft: "3px" }}>
               <button onClick={this.logout} className="button-link">
                 logout
