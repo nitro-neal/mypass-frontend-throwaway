@@ -25,7 +25,7 @@ class Admin extends React.Component {
     };
 
     let res = await axios.post(
-      "http://localhost:5000/api/admin/rolePermissionTable/",
+      "http://localhost:5000/api/admin/role-permission-table/",
       body
     );
 
@@ -35,7 +35,7 @@ class Admin extends React.Component {
   };
   buildPermissionTable = async () => {
     let rolePermRes = await axios.get(
-      "http://localhost:5000/api/admin/rolePermissionTable"
+      "http://localhost:5000/api/admin/role-permission-table"
     );
     console.log("roles");
     console.log(rolePermRes.data.rolePermissionTable);
@@ -47,7 +47,7 @@ class Admin extends React.Component {
         JSON.stringify({})
     ) {
       let rolePermResDefault = await axios.get(
-        "http://localhost:5000/api/admin/generateDefaultRolePermissionsTable"
+        "http://localhost:5000/api/admin/generate-default-role-permissions-table"
       );
       console.log("default tabe");
       console.log(rolePermResDefault.data.rolePermissionTable);

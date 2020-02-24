@@ -40,7 +40,7 @@ class OwnerWorkflow extends React.Component {
   };
 
   getAccountData = async () => {
-    let res = await axios.get(this.props.urlBase + "/api/documenttypes/");
+    let res = await axios.get(this.props.urlBase + "/api/document-types/");
     console.log(res);
     this.setState({ documentTypes: res.data.documentTypes });
 
@@ -48,7 +48,7 @@ class OwnerWorkflow extends React.Component {
       this.props.urlBase +
         "/api/account/" +
         this.state.ownerAccount.id +
-        "/sharerequests"
+        "/share-requests"
     );
 
     this.setState({ shareRequests: sqRes.data });
@@ -106,7 +106,10 @@ class OwnerWorkflow extends React.Component {
         this.props.urlBase + "/api/documents/" + documents[i].url;
       let date = moment(documents[i].createdAt);
       let humanReadable = date.format("MMM Do YYYY");
-      let docObject = { createdAt: humanReadable, url: documentUrl };
+      let docObject = {
+        createdAt: humanReadable,
+        url: documentUrl + "/" + window.localStorage.getItem("jwt-owner")
+      };
       let type = documents[i].type;
       documentTypeToUrlMap[type] = docObject;
     }
@@ -142,6 +145,7 @@ class OwnerWorkflow extends React.Component {
 
     axios.defaults.headers.common["Authorization"] = "Bearer " + account.token;
     localStorage.setItem("jwt-owner", account.token);
+    console.log("account");
     console.log(account);
     this.setState({ ownerAccount: account });
 
@@ -174,13 +178,23 @@ class OwnerWorkflow extends React.Component {
     console.log("sq");
     console.log(shareRequest);
     let body = {
-      shareRequestId: shareRequest._id
+      shareRequestId: shareRequest._id,
+      approved: true
     };
 
-    let sqRes = await axios.post(
-      this.props.urlBase + "/api/approveShareRequest",
+    // let sqRes = await axios.post(
+    //   this.props.urlBase + "/api/approveShareRequest",
+    //   body
+    // );
+    let sqRes = await axios.put(
+      this.props.urlBase +
+        "/api/account/" +
+        this.state.ownerAccount.id +
+        "/share-requests/",
       body
     );
+
+    console.log(sqRes);
   };
 
   componentDidMount = () => {
