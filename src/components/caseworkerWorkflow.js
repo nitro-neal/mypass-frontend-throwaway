@@ -26,11 +26,13 @@ class CaseWorkerWorkflow extends React.Component {
   state = {
     caseWorkerAccount: {},
     loggedInAsCaseWorker: true,
+    uploadDocumentFinished: false,
     ownerAccountsForSearch: [],
     ownerAccounts: [],
     selectedAccout: {},
     uploadModal: false,
     availableDocumentTypes: [],
+    requestClickedForTypes: {},
     shareRequests: [],
     allDocumentTypes: [],
     currentUploadType: "Birth Certificate",
@@ -72,6 +74,11 @@ class CaseWorkerWorkflow extends React.Component {
     console.log(res);
 
     this.setState({ requestButtonClicked: true });
+
+    let rcft = this.state.requestClickedForTypes;
+
+    rcft[name] = true;
+    this.setState({ requestClickedForTypes: rcft });
   };
 
   fileSelected = () => {
@@ -346,6 +353,21 @@ class CaseWorkerWorkflow extends React.Component {
         }
       }
 
+      console.log("this.state.requestClickedForTypes[documentType]");
+      console.log(documentType);
+      console.log(this.state.requestClickedForTypes[documentType]);
+      if (this.state.requestClickedForTypes[documentType] == true) {
+        requestButton = (
+          <MDBBtn
+            disabled
+            onClick={this.requestDocument(documentType)}
+            color="mdb-color"
+          >
+            Requested
+          </MDBBtn>
+        );
+      }
+
       // if(shareRequest.approved === false)
       ownerAvailableDocumentTypes.push(
         <div>
@@ -418,6 +440,23 @@ class CaseWorkerWorkflow extends React.Component {
       </select>
     );
 
+    let loadingOrReady = (
+      <div className="spinner-border text-primary" role="status">
+        <span className="sr-only">Loading...</span>
+      </div>
+    );
+
+    if (this.state.uploadOnBehalfResponseVC !== undefined) {
+      loadingOrReady = (
+        <div>
+          <h5>Verifiable Credential</h5>
+          <p>{this.state.uploadOnBehalfResponseVC}</p>
+          <h5>Verifiable Presentation</h5>
+          <p>{this.state.uploadOnBehalfResponseVP}</p>
+        </div>
+      );
+    }
+
     let uploadDetailModal = (
       <MDBModal
         size="m"
@@ -431,7 +470,7 @@ class CaseWorkerWorkflow extends React.Component {
           </p>
         </MDBModalHeader>
         <MDBModalBody style={{ textAlign: "center" }}>
-          {this.state.uploadOnBehalfResponseVC === undefined ? (
+          {this.state.uploadDocumentFinished === false ? (
             <div>
               <h5 style={{ paddingTop: "50px" }}>
                 Upload a document for owner:{" "}
@@ -489,10 +528,11 @@ class CaseWorkerWorkflow extends React.Component {
             </div>
           ) : (
             <div>
-              <h5>Verifiable Credential</h5>
+              {loadingOrReady}
+              {/* <h5>Verifiable Credential</h5>
               <p>{this.state.uploadOnBehalfResponseVC}</p>
               <h5>Verifiable Presentation</h5>
-              <p>{this.state.uploadOnBehalfResponseVP}</p>
+              <p>{this.state.uploadOnBehalfResponseVP}</p> */}
             </div>
           )}
         </MDBModalBody>
