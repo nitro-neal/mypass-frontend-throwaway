@@ -11,12 +11,11 @@ jobs:
           steps:
             - run: npm install
             - run: npm test
+      - run:
+          name: Deploy Over SSH
+          command: |
+            ssh ubuntu@ec2-34-212-27-73.us-west-2.compute.amazonaws.com "cd /home/ubuntu/CIRCLE-CI-MYPASS-FRONTEND && git clone https://github.com/nitro-neal/mypass-frontend-throwaway.git && cd /home/ubuntu/CIRCLE-CI-MYPASS-FRONTEND/mypass-frontend-throwaway && forever start -c 'serve -l 3000 -s' build"
 workflows:
   build-and-test:
     jobs:
       - build-and-test
-deployment:
-  dev:
-    branch: master
-    commands:
-      - ssh ubuntu@ec2-34-212-27-73.us-west-2.compute.amazonaws.com "cd /home/ubuntu/CIRCLE-CI-MYPASS-FRONTEND && git clone https://github.com/nitro-neal/mypass-frontend-throwaway.git && cd /home/ubuntu/CIRCLE-CI-MYPASS-FRONTEND/mypass-frontend-throwaway && forever start -c 'serve -l 3000 -s' build"
