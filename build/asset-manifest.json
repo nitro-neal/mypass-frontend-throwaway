@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/static/css/main.9c194c73.chunk.css",
+    "main.js": "/static/js/main.a247b7da.chunk.js",
+    "main.js.map": "/static/js/main.a247b7da.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.eca084e8.js",
+    "runtime-main.js.map": "/static/js/runtime-main.eca084e8.js.map",
+    "static/css/2.143567b6.chunk.css": "/static/css/2.143567b6.chunk.css",
+    "static/js/2.5011ad10.chunk.js": "/static/js/2.5011ad10.chunk.js",
+    "static/js/2.5011ad10.chunk.js.map": "/static/js/2.5011ad10.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.0977bae5e8fd97d627876fc429b0e9e0.js": "/precache-manifest.0977bae5e8fd97d627876fc429b0e9e0.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.143567b6.chunk.css.map": "/static/css/2.143567b6.chunk.css.map",
+    "static/css/main.9c194c73.chunk.css.map": "/static/css/main.9c194c73.chunk.css.map",
+    "static/js/2.5011ad10.chunk.js.LICENSE": "/static/js/2.5011ad10.chunk.js.LICENSE",
+    "static/media/mypass-webflow.css": "/static/media/zach-lucero-CQ4cMjZiPnw-unsplash.715537f7.jpg",
+    "static/media/mdb.css": "/static/media/arrow_right.8ef6a08c.svg",
+    "static/media/all.min.css": "/static/media/fa-solid-900.f6121be5.woff2"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.eca084e8.js",
+    "static/css/2.143567b6.chunk.css",
+    "static/js/2.5011ad10.chunk.js",
+    "static/css/main.9c194c73.chunk.css",
+    "static/js/main.a247b7da.chunk.js"
+  ]
+}
