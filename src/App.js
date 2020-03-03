@@ -15,8 +15,8 @@ import CaseWorkerWorkflow from "./components/caseworkerWorkflow";
 import ChooseWorkflow from "./components/chooseWorkflow";
 import Verify from "./components/verify";
 
-// const URL_BASE = "http://34.212.27.73:5000";
-const URL_BASE = "http://localhost:5000";
+const URL_BASE = "http://34.212.27.73:5000";
+// const URL_BASE = "http://localhost:5000";
 
 function App() {
   return (

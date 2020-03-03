@@ -597,7 +597,7 @@ class CaseWorkerWorkflow extends React.Component {
             <img
               style={{ marginTop: "47px", width: "50px" }}
               class="circular--square"
-              src="newimages/caseworker.png"
+              src="newimages/caseworkerlower.png"
             />
             <p style={{ paddingLeft: "3px" }}>
               <button onClick={this.logout} className="button-link">

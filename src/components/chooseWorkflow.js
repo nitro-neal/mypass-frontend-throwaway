@@ -37,20 +37,63 @@ class ChooseWorkflow extends React.Component {
         <MDBRow>
           <MDBCol></MDBCol>
           <MDBCol>
-            <img style={{ marginTop: "300px", width: "350px", display: "block", marginLeft: "auto", marginRight: "auto" }} src="./newimages/mypass-logo.png"></img>
+            <img
+              style={{
+                marginTop: "300px",
+                width: "350px",
+                display: "block",
+                marginLeft: "auto",
+                marginRight: "auto"
+              }}
+              src="./newimages/mypass-logo.png"
+            ></img>
             <MDBRow>
               <MDBCol>
                 <div style={{ marginTop: "100px" }}>
-                  <img style={{ width: "70px", display: "block", marginLeft: "auto", marginRight: "auto" }} class="circular--square" src="newimages/owner.png" />
-                  <MDBBtn onClick={this.loginAsOwner} style={{ display: "block", marginLeft: "auto", marginRight: "auto" }} color="primary">
+                  <img
+                    style={{
+                      width: "70px",
+                      display: "block",
+                      marginLeft: "auto",
+                      marginRight: "auto"
+                    }}
+                    class="circular--square"
+                    src="newimages/owner.png"
+                  />
+                  <MDBBtn
+                    onClick={this.loginAsOwner}
+                    style={{
+                      display: "block",
+                      marginLeft: "auto",
+                      marginRight: "auto"
+                    }}
+                    color="primary"
+                  >
                     Login As Owner
                   </MDBBtn>
                 </div>
               </MDBCol>
               <MDBCol>
                 <div style={{ marginTop: "100px" }}>
-                  <img style={{ width: "70px", display: "block", marginLeft: "auto", marginRight: "auto" }} class="circular--square" src="newimages/caseworker.png" />
-                  <MDBBtn onClick={this.loginAsCaseWorker} style={{ display: "block", marginLeft: "auto", marginRight: "auto" }} color="primary">
+                  <img
+                    style={{
+                      width: "70px",
+                      display: "block",
+                      marginLeft: "auto",
+                      marginRight: "auto"
+                    }}
+                    class="circular--square"
+                    src="newimages/caseworkerlower.png"
+                  />
+                  <MDBBtn
+                    onClick={this.loginAsCaseWorker}
+                    style={{
+                      display: "block",
+                      marginLeft: "auto",
+                      marginRight: "auto"
+                    }}
+                    color="primary"
+                  >
                     Login As Case Worker
                   </MDBBtn>
                 </div>

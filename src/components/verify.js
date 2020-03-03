@@ -96,7 +96,7 @@ class Verify extends React.Component {
             <img
               style={{ margin: "47px", width: "45px" }}
               class="circular--square"
-              src="newimages/caseworker.png"
+              src="newimages/caseworkerlower.png"
             />
             {this.state.verifiedVC && this.state.verifiedSigner}
           </MDBCol>
