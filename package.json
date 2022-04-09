@@ -13,7 +13,7 @@
     "ethr-did-resolver": "^2.2.0",
     "mdbootstrap": "^4.12.0",
     "mdbreact": "^4.25.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "react": "^16.12.0",
     "react-autosuggest": "^9.4.3",
     "react-dom": "^16.12.0",
